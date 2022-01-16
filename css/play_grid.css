@@ -1,0 +1,15 @@
+.letter-square {
+  width: 85px;
+  height: 85px;
+  margin-right: 8px;
+  border: 1px solid black;
+}
+
+.letter-row {
+  display: flex;
+}
+
+.letter-row div {
+  flex: 0 1 auto;
+  margin-bottom: 12px;
+}

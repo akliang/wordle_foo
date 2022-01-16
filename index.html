@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- character encoding -->
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+
+  <link rel="stylesheet" href="css/play_grid.css">
+  <link rel="stylesheet" href="css/keyboard.css">
+
+  <!-- responsive setup -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- vue libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js" defer></script>
+
+  <!-- custom vue components -->
+  <script src="./js/play_grid.js" defer></script>
+  <script src="./js/keyboard.js" defer></script>
+
+  <!-- main vue files -->
+  <script src="./js/start.js" defer></script>
+
+  
+</head>
+
+<body>
+
+  <div id="vue-start">
+
+    
+
+    <!-- <vue-letter v-for="item in letterParams" v-bind:key="item.letterVal" v-bind:letter-val="item.letterVal"></vue-letter> -->
+    <play-grid></play-grid>
+    <keyboard v-bind:letter-params=letterParams></keyboard>
+    
+
+
+  </div>
+
+  
+
+</body>
