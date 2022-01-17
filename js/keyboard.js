@@ -1,4 +1,4 @@
-Vue.component('keyboard-key', {
+app.component('keyboard-key', {
   props: {
     letterVal: String,
     letterPos: Array,
@@ -6,12 +6,20 @@ Vue.component('keyboard-key', {
     colorVal: {
       type: String,
       default: 'white',
-    }
+    },
   },
-  template: '<button v-bind:value=letterVal class="keyboard-key">{{ letterVal }}</button>'
+  template: '<button v-bind:value=letterVal class="keyboard-key" @click="advanceGrid()">{{ letterVal }}</button>',
+  methods: {
+    advanceGrid: function() {
+      console.log("currRow is: " + this.$store.state.currRow);
+      this.$store.state.currRow += 1;
+      // console.log("currCol is: " + currCol);
+      // currRow = currRow + 1;
+    },
+  }
 })
 
-Vue.component('keyboard', {
+app.component('keyboard', {
   props: ['letterParams'],
   template: `
   <div>

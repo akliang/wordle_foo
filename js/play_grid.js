@@ -1,8 +1,8 @@
-Vue.component('letter-square', {
+app.component('letter-square', {
   template: '<div class="letter-square">hi</div>'
 })
 
-Vue.component('letter-row', {
+app.component('letter-row', {
   template: `
   <span class="letter-row">
     <div v-for="n in 5">
@@ -12,7 +12,7 @@ Vue.component('letter-row', {
   `
 })
 
-Vue.component('play-grid', {
+app.component('play-grid', {
   template: `
   <span>
     <template v-for="n in 6">

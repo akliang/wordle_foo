@@ -13,15 +13,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- vue libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js" defer></script>
+  <script src="https://unpkg.com/vue@3.2.27/dist/vue.global.js" defer></script>
+  <script src="https://unpkg.com/vuex@4.0.2/dist/vuex.global.js" defer></script>
 
   <!-- custom vue components -->
+  <script src="./js/start.js" defer></script>
   <script src="./js/play_grid.js" defer></script>
   <script src="./js/keyboard.js" defer></script>
-
-  <!-- main vue files -->
-  <script src="./js/start.js" defer></script>
-
+  <script src="./js/debug-display.js" defer></script>
+  <script src="./js/finish.js" defer></script>
   
 </head>
 
@@ -29,13 +29,9 @@
 
   <div id="vue-start">
 
-    
-
-    <!-- <vue-letter v-for="item in letterParams" v-bind:key="item.letterVal" v-bind:letter-val="item.letterVal"></vue-letter> -->
-    <play-grid></play-grid>
-    <keyboard v-bind:letter-params=letterParams></keyboard>
-    
-
+    <!-- <play-grid></play-grid> -->
+    <keyboard v-bind:letter-params="letterParams"></keyboard>
+    <debug-display></debug-display>
 
   </div>
 
