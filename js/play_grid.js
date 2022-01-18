@@ -2,7 +2,7 @@ app.component('letter-square', {
   props: ['myRow','myCol'],
   computed: {
     colorCheck() {
-      switch(this.$store.state.gridColors[this.myRow][this.myCol]) {
+      switch(this.$store.state.gameSettings.gridColors[this.myRow][this.myCol]) {
         case 0: return "white";
         case 1: return "gray";
         case 2: return "yellow";
@@ -10,7 +10,7 @@ app.component('letter-square', {
       }
     }
   },
-  template: '<div class="letter-square" v-bind:class="colorCheck">{{ this.$store.state.gridVals[myRow][myCol] }}</div>'
+  template: '<div class="letter-square" v-bind:class="colorCheck">{{ this.$store.state.gameSettings.gridVals[myRow][myCol] }}</div>'
 })
 
 app.component('letter-row', {

@@ -1,56 +1,8 @@
 var store = Vuex.createStore({
-  state() {
-    return { 
-      currRow: 0,
-      currCol: 0,
-      alphabetList: ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
-      letterParams: [
-        { letterVal: 'a', colorVal: 0},
-        { letterVal: 'b', colorVal: 0},
-        { letterVal: 'c', colorVal: 0},
-        { letterVal: 'd', colorVal: 0},
-        { letterVal: 'e', colorVal: 0},
-        { letterVal: 'f', colorVal: 0},
-        { letterVal: 'g', colorVal: 0},
-        { letterVal: 'h', colorVal: 0},
-        { letterVal: 'i', colorVal: 0},
-        { letterVal: 'j', colorVal: 0},
-        { letterVal: 'k', colorVal: 0},
-        { letterVal: 'l', colorVal: 0},
-        { letterVal: 'm', colorVal: 0},
-        { letterVal: 'n', colorVal: 0},
-        { letterVal: 'o', colorVal: 0},
-        { letterVal: 'p', colorVal: 0},
-        { letterVal: 'q', colorVal: 0},
-        { letterVal: 'r', colorVal: 0},
-        { letterVal: 's', colorVal: 0},
-        { letterVal: 't', colorVal: 0},
-        { letterVal: 'u', colorVal: 0},
-        { letterVal: 'v', colorVal: 0},
-        { letterVal: 'w', colorVal: 0},
-        { letterVal: 'x', colorVal: 0},
-        { letterVal: 'y', colorVal: 0},
-        { letterVal: 'z', colorVal: 0},
-      ],
-      gridVals: [
-        ['', '', '', '', ''],
-        ['', '', '', '', ''],
-        ['', '', '', '', ''],
-        ['', '', '', '', ''],
-        ['', '', '', '', ''],
-        ['', '', '', '', ''],
-      ],
-      gridColors: [
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0],
-      ],
-      theWord: 'hello',
-    }
-  },
+  modules: {
+    gameSettings: gameSettings,
+    wordList: wordList,
+  }
 })
 
 app.use(store);

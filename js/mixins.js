@@ -2,16 +2,21 @@ app.mixin({
   methods: {
     checkWord: function() {
       // some convenience variables
-      const currRow = this.$store.state.currRow;
-      const currLetters = this.$store.state.gridVals[currRow];
-      const theWord = this.$store.state.theWord;
-      // const theWordArray = this.$store.state.theWord.split('');
-      
+      const currRow = this.$store.state.gameSettings.currRow;
+      const currLetters = this.$store.state.gameSettings.gridVals[currRow];
+      const theWord = this.$store.state.gameSettings.theWord;
+      const allWords = this.$store.state.wordList.words;
+
+      // first check that the submitted word is a valid word
+      const nowWord = currLetters.join('');
+      if (allWords.indexOf(nowWord) == -1) {
+        console.log("Not a valid word");
+        return;
+      }
 
       // initialize variables
       let correctLetter = new Array(5).fill(0);
       let foundLetter = new Array(5).fill(0);
-      // let nowWord = '';
 
       
       // step through every submitted letter
@@ -24,32 +29,44 @@ app.mixin({
 
         // check fuzzy match
         else {
-          if (theWord.split('').indexOf(element)) {
+          if (theWord.split('').indexOf(element) != -1) {
             foundLetter[i] = 1;
           }
         }
 
         // color the grid
         if (correctLetter[i]) {
-          this.$store.state.gridColors[currRow][i] = 3;
+          this.$store.state.gameSettings.gridColors[currRow][i] = 3;
         } else if (foundLetter[i]) {
-          this.$store.state.gridColors[currRow][i] = 2;
+          this.$store.state.gameSettings.gridColors[currRow][i] = 2;
         } else {
-          this.$store.state.gridColors[currRow][i] = 1;
+          this.$store.state.gameSettings.gridColors[currRow][i] = 1;
         }
 
+
         // color the keyboard
+        let idx = this.$store.state.gameSettings.alphabetList.indexOf(element);
+        if (correctLetter[i]) {
+          this.$store.state.gameSettings.letterParams[idx].isGreen = 1;
+        } else if (foundLetter[i]) {
+          // console.log(foundLetter);
+          // console.log(i);
+          // console.log(foundLetter[i]);
+          this.$store.state.gameSettings.letterParams[idx].isYellow = 1;
+        } else {
+          this.$store.state.gameSettings.letterParams[idx].isGray = 1;
+        }
       });
 
+
       // check for win-loss
-      console.log(correctLetter);
       if (correctLetter.every((cl) => cl == 1)) {
         console.log("win!");
       } else if (currRow == 5) {
         console.log("loss...");
       } else {
-        this.$store.state.currRow += 1;
-        this.$store.state.currCol = 0;
+        this.$store.state.gameSettings.currRow += 1;
+        this.$store.state.gameSettings.currCol = 0;
       }
     
     }
