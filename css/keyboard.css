@@ -1,4 +1,26 @@
 button.keyboard-key {
   border: 1px solid black;
   margin: 2px;
+  width: 30px;
+  height: 30px;
+}
+
+#keyboard-a {
+  margin-left: 15px;
+}
+#keyboard-z {
+  margin-left: 30px;
+}
+
+#keyboard-delete {
+  width: 100px;
+  height: 30px;
+  margin-left: 50px;
+  background-color: #ff6969;
+}
+
+#keyboard-enter {
+  width: 100px;
+  height: 30px;
+  background-color: #5eff6c;
 }
