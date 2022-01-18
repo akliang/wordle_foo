@@ -1,8 +1,13 @@
+.keyboard-wrapper {
+  margin-left: 65px;
+}
+
 button.keyboard-key {
   border: 1px solid black;
   margin: 2px;
   width: 30px;
   height: 30px;
+  border-radius: 6px;
 }
 
 #keyboard-a {

@@ -7,8 +7,8 @@ app.component('parent', {
   template: `
     <div>
       <play-grid></play-grid>
+      <messages message="hello"></messages>
       <keyboard></keyboard>
-      <debug-display></debug-display>
     </div>
   `
 })

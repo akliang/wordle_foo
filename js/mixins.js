@@ -52,14 +52,11 @@ app.mixin({
         // color the keyboard
         let idx = this.$store.state.gameSettings.alphabetList.indexOf(element);
         if (correctLetter[i]) {
-          this.$store.state.gameSettings.letterParams[idx].isGreen = 1;
+          this.$store.state.gameSettings.letterParams[idx].isGreen = true;
         } else if (foundLetter[i]) {
-          // console.log(foundLetter);
-          // console.log(i);
-          // console.log(foundLetter[i]);
-          this.$store.state.gameSettings.letterParams[idx].isYellow = 1;
+          this.$store.state.gameSettings.letterParams[idx].isYellow = true;
         } else {
-          this.$store.state.gameSettings.letterParams[idx].isGray = 1;
+          this.$store.state.gameSettings.letterParams[idx].isGray = true;
         }
       });
 

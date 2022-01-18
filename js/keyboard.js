@@ -1,22 +1,14 @@
 app.component('keyboard-key', {
   props: {
     letterVal: String,
-    colorVal: Number,
     letterBreak: Boolean,
-  },
-  computed: {
-    colorCheck() {
-      switch(this.colorVal) {
-        case 0: return "white";
-        case 1: return "gray";
-        case 2: return "yellow";
-        case 3: return "green";
-      }
-    }
+    isGray: Boolean,
+    isYellow: Boolean,
+    isGreen: Boolean,
   },
   template: `
     <span>
-      <button v-bind:value=letterVal class="keyboard-key" @click="placeLetter(letterVal)" v-bind:class="colorCheck">{{ letterVal }}</button>
+      <button v-bind:value=letterVal class="keyboard-key white" v-bind:class="{ gray: isGray, yellow: isYellow, green: isGreen }" @click="placeLetter(letterVal)">{{ letterVal }}</button>
       <br v-if="letterBreak">
     </span>
   `,
@@ -60,8 +52,8 @@ app.component('keyboard-enter', {
 app.component('keyboard', {
   props: ['letterParams'],
   template: `
-  <div>
-    <keyboard-key v-for="item in this.$store.state.gameSettings.letterParams" v-bind:key="item.letterVal" v-bind:letter-val="item.letterVal" class="white" v-bind:class="{ gray: item.isGray, yellow: item.isYellow, green: item.isGreen }" v-bind:id="'keyboard-' + item.letterVal" v-bind:letter-break="item.letterBreak"></keyboard-key>
+  <div class="keyboard-wrapper">
+    <keyboard-key v-for="item in this.$store.state.gameSettings.letterParams" v-bind:key="item.letterVal" v-bind:letter-val="item.letterVal" v-bind:is-gray="item.isGray" v-bind:is-yellow="item.isYellow" v-bind:is-green="item.isGreen" v-bind:id="'keyboard-' + item.letterVal" v-bind:letter-break="item.letterBreak"></keyboard-key>
     <br>
     <keyboard-delete id="keyboard-delete"></keyboard-delete>
     <keyboard-enter id="keyboard-enter"></keyboard-enter>
