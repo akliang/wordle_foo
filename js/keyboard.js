@@ -47,7 +47,6 @@ app.component('keyboard-delete', {
   }
 })
 
-// todo: disable Enter button until input 5 letters
 app.component('keyboard-enter', {
   template: '<button class="keyboard-key" @click="checkWord()">Enter</button>',
 })

@@ -1,11 +1,18 @@
 app.mixin({
   methods: {
     checkWord: function() {
-      // some convenience variables
+      // make sure 5 letters are submitted
+      if (this.$store.state.gameSettings.currCol < 5) {
+        console.log("Less than 5 letters submitted.");
+        return;
+      }
+
+      // set up some convenience variables
       const currRow = this.$store.state.gameSettings.currRow;
       const currLetters = this.$store.state.gameSettings.gridVals[currRow];
       const theWord = this.$store.state.gameSettings.theWord;
       const allWords = this.$store.state.wordList.words;
+
 
       // first check that the submitted word is a valid word
       const nowWord = currLetters.join('');
@@ -14,12 +21,10 @@ app.mixin({
         return;
       }
 
-      // initialize variables
-      let correctLetter = new Array(5).fill(0);
-      let foundLetter = new Array(5).fill(0);
-
       
       // step through every submitted letter
+      let correctLetter = new Array(5).fill(0);
+      let foundLetter = new Array(5).fill(0);
       currLetters.forEach((element,i) => {
 
         // check absolute match
