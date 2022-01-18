@@ -67,6 +67,7 @@ app.mixin({
       if (correctLetter.every((cl) => cl == 1)) {
         this.$store.state.gameSettings.messageColor = "text-green";
         this.$store.state.gameSettings.message = "You win!";
+        this.$store.state.gameSettings.gameWon = true;
       } else if (currRow == 5) {
         this.$store.state.gameSettings.messageColor = "text-red";
         this.$store.state.gameSettings.message = "You lost!  Word was \"" + this.$store.state.gameSettings.theWord + "\".";
@@ -76,6 +77,25 @@ app.mixin({
         this.$store.state.gameSettings.message = '';
       }
     
+    },
+    
+    initializeGame: function() {
+      // perform a deep-clone of the default values
+      this.$store.state.gameSettings.letterParams = JSON.parse(JSON.stringify(this.$store.state.gameSettings.defaultLetterParams));
+      this.$store.state.gameSettings.gridVals = JSON.parse(JSON.stringify(this.$store.state.gameSettings.defaultGridVals));
+      this.$store.state.gameSettings.gridColors = JSON.parse(JSON.stringify(this.$store.state.gameSettings.defaultGridColors));
+      this.$store.state.gameSettings.currRow = 0;
+      this.$store.state.gameSettings.currCol = 0;
+      this.$store.state.gameSettings.message = '';
+      this.$store.state.gameSettings.gameWon = false;
+
+      console.log(this.$store.state.gameSettings.gridVals[0]);
+      console.log(this.$store.state.gameSettings.defaultGridVals[0]);
+      console.log(this.$store.state.gameSettings.currCol);
+
+      const maxNum = this.$store.state.wordList.maxNum;
+      const randNum = Math.floor(Math.random() * maxNum);
+      this.$store.state.gameSettings.theWord = this.$store.state.wordList.words[randNum].toUpperCase();
     }
   }
 })

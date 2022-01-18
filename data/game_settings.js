@@ -1,10 +1,8 @@
 const gameSettings = {
   state() {
     return { 
-      currRow: 0,
-      currCol: 0,
       alphabetList: ['Q','W','E','R','T','Y','U','I','O','P','A','S','D','F','G','H','J','K','L','Z','X','C','V','B','N','M',],
-      letterParams: [
+      defaultLetterParams: [
         { letterVal: 'Q', isGreen: false, isYellow: false, isGray: false, letterBreak: false},
         { letterVal: 'W', isGreen: false, isYellow: false, isGray: false, letterBreak: false},
         { letterVal: 'E', isGreen: false, isYellow: false, isGray: false, letterBreak: false},
@@ -32,7 +30,7 @@ const gameSettings = {
         { letterVal: 'N', isGreen: false, isYellow: false, isGray: false, letterBreak: false},
         { letterVal: 'M', isGreen: false, isYellow: false, isGray: false, letterBreak: false},
       ],
-      gridVals: [
+      defaultGridVals: [
         ['', '', '', '', ''],
         ['', '', '', '', ''],
         ['', '', '', '', ''],
@@ -40,7 +38,7 @@ const gameSettings = {
         ['', '', '', '', ''],
         ['', '', '', '', ''],
       ],
-      gridColors: [
+      defaultGridColors: [
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0],
@@ -48,9 +46,15 @@ const gameSettings = {
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0],
       ],
-      theWord: 'HELLO',
+      letterParams: '',
+      gridVals: '',
+      gridColors: '',
+      currRow: 0,
+      currCol: 0,
+      theWord: '',
       message: '',
       messageColor: '',
+      gameWon: false,
     }
   },
 }
