@@ -10,9 +10,7 @@ Feel free to fork or open pull requests!
 
 - seed in get param to sync up game with friend
 - refactor for mobile first
-- color messages
 - type with keyboard instead of touch screen
-- upper-case everything
 - play again function
 - stats keeping
 - sharing

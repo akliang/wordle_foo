@@ -16,7 +16,7 @@ app.mixin({
 
 
       // first check that the submitted word is a valid word
-      const nowWord = currLetters.join('');
+      const nowWord = currLetters.join('').toLowerCase();
       if (allWords.indexOf(nowWord) == -1) {
         this.$store.state.gameSettings.messageColor = "";
         this.$store.state.gameSettings.message = "Not a valid word";
