@@ -50,6 +50,8 @@ const gameSettings = {
         [0, 0, 0, 0, 0],
       ],
       theWord: 'hello',
+      message: '',
+      messageColor: '',
     }
   },
 }

@@ -1,4 +1,3 @@
 app.component('messages', {
-  props: ['message'],
-  template: '<div class="message-wrapper" >{{ message }}</div>',
+  template: '<div class="message-wrapper" v-bind:class="this.$store.state.gameSettings.messageColor">{{ this.$store.state.gameSettings.message }}</div>',
 })

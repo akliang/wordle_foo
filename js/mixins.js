@@ -3,7 +3,8 @@ app.mixin({
     checkWord: function() {
       // make sure 5 letters are submitted
       if (this.$store.state.gameSettings.currCol < 5) {
-        console.log("Less than 5 letters submitted.");
+        this.$store.state.gameSettings.messageColor = "";
+        this.$store.state.gameSettings.message = "Less than 5 letters submitted.";
         return;
       }
 
@@ -17,7 +18,8 @@ app.mixin({
       // first check that the submitted word is a valid word
       const nowWord = currLetters.join('');
       if (allWords.indexOf(nowWord) == -1) {
-        console.log("Not a valid word");
+        this.$store.state.gameSettings.messageColor = "";
+        this.$store.state.gameSettings.message = "Not a valid word";
         return;
       }
 
@@ -63,12 +65,15 @@ app.mixin({
 
       // check for win-loss
       if (correctLetter.every((cl) => cl == 1)) {
-        console.log("win!");
+        this.$store.state.gameSettings.messageColor = "text-green";
+        this.$store.state.gameSettings.message = "You win!";
       } else if (currRow == 5) {
-        console.log("loss...");
+        this.$store.state.gameSettings.messageColor = "text-red";
+        this.$store.state.gameSettings.message = "You lost!  Word was \"" + this.$store.state.gameSettings.theWord + "\".";
       } else {
         this.$store.state.gameSettings.currRow += 1;
         this.$store.state.gameSettings.currCol = 0;
+        this.$store.state.gameSettings.message = '';
       }
     
     }
