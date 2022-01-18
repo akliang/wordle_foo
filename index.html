@@ -6,6 +6,7 @@
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
   <meta content="utf-8" http-equiv="encoding">
 
+  <link rel="stylesheet" href="css/general.css">
   <link rel="stylesheet" href="css/play_grid.css">
   <link rel="stylesheet" href="css/keyboard.css">
 
@@ -18,6 +19,9 @@
 
   <!-- custom vue components -->
   <script src="./js/start.js" defer></script>
+  <script src="./js/vuex.js" defer></script>
+  <script src="./js/mixins.js" defer></script>
+  <script src="./js/parent.js" defer></script>
   <script src="./js/play_grid.js" defer></script>
   <script src="./js/keyboard.js" defer></script>
   <script src="./js/debug-display.js" defer></script>
@@ -26,15 +30,9 @@
 </head>
 
 <body>
-
   <div id="vue-start">
-
-    <!-- <play-grid></play-grid> -->
-    <keyboard v-bind:letter-params="letterParams"></keyboard>
-    <debug-display></debug-display>
-
+    <parent></parent>
   </div>
-
-  
-
 </body>
+
+</html>
