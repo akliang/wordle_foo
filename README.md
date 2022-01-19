@@ -11,9 +11,10 @@ Feel free to fork or open pull requests!
 - seed in get param to sync up game with friend
 - refactor for mobile first
 - type with keyboard instead of touch screen
-- play again function
 - stats keeping
 - sharing
+- testing
+- responsive
 
 # Credit
 
