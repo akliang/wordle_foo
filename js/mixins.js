@@ -89,13 +89,10 @@ app.mixin({
       this.$store.state.gameSettings.message = '';
       this.$store.state.gameSettings.gameWon = false;
 
-      console.log(this.$store.state.gameSettings.gridVals[0]);
-      console.log(this.$store.state.gameSettings.defaultGridVals[0]);
-      console.log(this.$store.state.gameSettings.currCol);
-
       const maxNum = this.$store.state.wordList.maxNum;
       const randNum = Math.floor(Math.random() * maxNum);
       this.$store.state.gameSettings.theWord = this.$store.state.wordList.words[randNum].toUpperCase();
-    }
+      this.$store.state.gameSettings.theWord = "HELLO";
+    },
   }
 })
