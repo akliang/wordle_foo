@@ -12,7 +12,10 @@
   <link rel="stylesheet" href="css/messages.css">
 
   <!-- responsive setup -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no, viewport-fit=cover">
+
+  <!-- tailwind css -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- vue libraries -->
   <script src="https://unpkg.com/vue@3.2.27/dist/vue.global.js" defer></script>
@@ -29,12 +32,15 @@
   <script src="./js/messages.js" defer></script>
   <script src="./js/keyboard.js" defer></script>
   <script src="./js/finish.js" defer></script>
-  
+
+  <title>Wordle!</title>
 </head>
 
 <body>
-  <div id="vue-start">
-    <parent></parent>
+  <div id="vue-start" class="mx-4">
+    <div class="max-h-screen h-full overflow-y-scroll">
+      <parent></parent>
+    </div>
   </div>
 </body>
 

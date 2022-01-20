@@ -8,7 +8,13 @@ app.component('keyboard-key', {
   },
   template: `
     <span>
-      <button v-bind:value=letterVal class="keyboard-key white" v-bind:class="{ gray: isGray, yellow: isYellow, green: isGreen }" @click="placeLetter(letterVal)">{{ letterVal }}</button>
+      <button 
+        v-bind:value=letterVal
+        class="keyboard-key white"
+        v-bind:class="{ gray: isGray, yellow: isYellow, green: isGreen }"
+        @click="placeLetter(letterVal)">
+          {{ letterVal }}
+      </button>
       <br v-if="letterBreak">
     </span>
   `,

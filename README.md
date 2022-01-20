@@ -15,6 +15,8 @@ Feel free to fork or open pull requests!
 - sharing
 - testing
 - responsive
+- dark mode
+- footer
 
 # Credit
 
