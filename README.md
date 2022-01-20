@@ -17,6 +17,7 @@ Feel free to fork or open pull requests!
 - responsive
 - dark mode
 - footer
+- add stat tracking
 
 # Credit
 
