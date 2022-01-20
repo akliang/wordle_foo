@@ -92,7 +92,6 @@ app.mixin({
       const maxNum = this.$store.state.wordList.maxNum;
       const randNum = Math.floor(Math.random() * maxNum);
       this.$store.state.gameSettings.theWord = this.$store.state.wordList.words[randNum].toUpperCase();
-      this.$store.state.gameSettings.theWord = "HELLO";
     },
   }
 })
