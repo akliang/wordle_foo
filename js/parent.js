@@ -3,7 +3,7 @@
       this.initializeGame();
     },
     template: `
-      <div>
+      <div class="h-full">
         <div id=upperGrid class="h-4/6">
           <play-grid></play-grid>
         </div>

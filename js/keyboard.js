@@ -1,22 +1,18 @@
 app.component('keyboard-key', {
   props: {
     letterVal: String,
-    letterBreak: Boolean,
     isGray: Boolean,
     isYellow: Boolean,
     isGreen: Boolean,
   },
   template: `
-    <span>
-      <button 
-        v-bind:value=letterVal
-        class="keyboard-key white"
-        v-bind:class="{ gray: isGray, yellow: isYellow, green: isGreen }"
-        @click="placeLetter(letterVal)">
-          {{ letterVal }}
-      </button>
-      <br v-if="letterBreak">
-    </span>
+    <button 
+      class="w-8 h-8 border border-slate-500 rounded-md mr-1 mb-1"
+      v-bind:value=letterVal
+      v-bind:class="{ 'bg-gray-400': isGray, 'bg-yellow-500': isYellow, 'bg-green-500': isGreen }"
+      @click="placeLetter(letterVal)">
+        {{ letterVal }}
+    </button>
   `,
   methods: {
     placeLetter: function(letterVal) {
@@ -34,7 +30,7 @@ app.component('keyboard-key', {
 })
 
 app.component('keyboard-delete', {
-  template: '<button class="keyboard-key" @click="deleteLetter()">Delete</button>',
+  template: '<button class="w-1/4 h-8 border border-slate-500 rounded-md mr-2 bg-red-400" @click="deleteLetter()">Delete</button>',
   methods: {
     deleteLetter: function() {
       if (this.$store.state.gameSettings.currCol == 0) {
@@ -52,17 +48,57 @@ app.component('keyboard-delete', {
 })
 
 app.component('keyboard-enter', {
-  template: '<button class="keyboard-key" @click="checkWord()">Enter</button>',
+  template: '<button class="w-1/4 h-8 border border-slate-500 rounded-md bg-blue-500" @click="checkWord()">Enter</button>',
 })
 
 app.component('keyboard', {
   props: ['letterParams'],
+  computed: {
+    rowOne: function() {
+      return this.$store.state.gameSettings.letterParams.slice(0,10);
+    },
+    rowTwo: function() {
+      return this.$store.state.gameSettings.letterParams.slice(10,19);
+    },
+    rowThree: function() {
+      return this.$store.state.gameSettings.letterParams.slice(19,27);
+    }
+  },
   template: `
-  <div class="keyboard-wrapper">
-    <keyboard-key v-for="item in this.$store.state.gameSettings.letterParams" v-bind:key="item.letterVal" v-bind:letter-val="item.letterVal" v-bind:is-gray="item.isGray" v-bind:is-yellow="item.isYellow" v-bind:is-green="item.isGreen" v-bind:id="'keyboard-' + item.letterVal" v-bind:letter-break="item.letterBreak"></keyboard-key>
-    <br>
-    <keyboard-delete id="keyboard-delete"></keyboard-delete>
-    <keyboard-enter id="keyboard-enter"></keyboard-enter>
-  </div>
+    <div class="flex justify-center">
+      <keyboard-key v-for="item in rowOne"
+        v-bind:key="item.letterVal"
+        v-bind:letter-val="item.letterVal"
+        v-bind:is-gray="item.isGray"
+        v-bind:is-yellow="item.isYellow"
+        v-bind:is-green="item.isGreen">
+      </keyboard-key>
+    </div>
+
+    <div class="flex justify-center">
+      <keyboard-key v-for="item in rowTwo"
+        v-bind:key="item.letterVal"
+        v-bind:letter-val="item.letterVal"
+        v-bind:is-gray="item.isGray"
+        v-bind:is-yellow="item.isYellow"
+        v-bind:is-green="item.isGreen">
+      </keyboard-key>
+    </div>
+
+    <div class="flex justify-center">
+      <keyboard-key v-for="item in rowThree"
+        v-bind:key="item.letterVal"
+        v-bind:letter-val="item.letterVal"
+        v-bind:is-gray="item.isGray"
+        v-bind:is-yellow="item.isYellow"
+        v-bind:is-green="item.isGreen">
+      </keyboard-key>
+    </div>
+
+    <div class="flex justify-center mt-2">
+      <keyboard-delete></keyboard-delete>
+      <keyboard-enter></keyboard-enter>
+    </div>
+  
   `
 })

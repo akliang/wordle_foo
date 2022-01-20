@@ -10,26 +10,27 @@ app.component('letter-square', {
       }
     }
   },
-  template: '<div class="letter-square" v-bind:class="colorCheck">{{ this.$store.state.gameSettings.gridVals[myRow][myCol] }}</div>'
+  template: `
+    <div
+      class="w-1/6 h-full border border-slate-500 rounded flex-initial mr-2 last:mr-0 justify-center items-center"
+      v-bind:class="colorCheck">
+        {{ this.$store.state.gameSettings.gridVals[myRow][myCol] }}
+    </div>`
 })
 
 app.component('letter-row', {
   props: ['myRow'],
   template: `
-  <span class="letter-row">
-    <div v-for="n in 5">
+    <template v-for="n in 5">
       <letter-square :my-row="myRow" :my-col="n-1"></letter-square>
-    </div>
-  </span>
-  `
+    </template>`
 })
 
 app.component('play-grid', {
   template: `
-  <span>
-    <template v-for="n in 6">
+  <div class="h-full">
+    <div v-for="n in 6" class="flex h-1/6 pt-6 justify-center">
       <letter-row :my-row="n-1"></letter-row>
-    </template>
-  </span>
-  `
+    </div>
+  </div>`
 })
