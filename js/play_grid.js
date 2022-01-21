@@ -28,7 +28,7 @@ app.component('letter-row', {
 
 app.component('play-grid', {
   template: `
-  <div class="h-full px-6">
+  <div class="h-full">
     <div v-for="n in 6" class="flex h-1/6 pt-2 justify-center">
       <letter-row :my-row="n-1"></letter-row>
     </div>
