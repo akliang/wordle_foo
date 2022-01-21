@@ -4,15 +4,15 @@ app.component('letter-square', {
     colorCheck() {
       switch(this.$store.state.gameSettings.gridColors[this.myRow][this.myCol]) {
         case 0: return "white";
-        case 1: return "gray";
-        case 2: return "yellow";
-        case 3: return "green";
+        case 1: return "bg-gray-400";
+        case 2: return "bg-yellow-200";
+        case 3: return "bg-green-400";
       }
     }
   },
   template: `
     <div
-      class="w-1/6 h-full border border-slate-500 rounded flex-initial mr-2 last:mr-0 justify-center items-center"
+      class="w-1/6 h-full border border-slate-300 rounded flex mr-2 last:mr-0 justify-center items-center text-2xl"
       v-bind:class="colorCheck">
         {{ this.$store.state.gameSettings.gridVals[myRow][myCol] }}
     </div>`
@@ -28,8 +28,8 @@ app.component('letter-row', {
 
 app.component('play-grid', {
   template: `
-  <div class="h-full">
-    <div v-for="n in 6" class="flex h-1/6 pt-6 justify-center">
+  <div class="h-full px-6">
+    <div v-for="n in 6" class="flex h-1/6 pt-2 justify-center">
       <letter-row :my-row="n-1"></letter-row>
     </div>
   </div>`

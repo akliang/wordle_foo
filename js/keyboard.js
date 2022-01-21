@@ -7,9 +7,9 @@ app.component('keyboard-key', {
   },
   template: `
     <button 
-      class="w-8 h-8 border border-slate-500 rounded-md mr-1 mb-1"
+      class="w-8 h-12 border border-slate-300 rounded-md m-0.5"
       v-bind:value=letterVal
-      v-bind:class="{ 'bg-gray-400': isGray, 'bg-yellow-500': isYellow, 'bg-green-500': isGreen }"
+      v-bind:class="{ 'bg-gray-400': isGray, 'bg-yellow-200': isYellow, 'bg-green-400': isGreen }"
       @click="placeLetter(letterVal)">
         {{ letterVal }}
     </button>
@@ -30,7 +30,12 @@ app.component('keyboard-key', {
 })
 
 app.component('keyboard-delete', {
-  template: '<button class="w-1/4 h-8 border border-slate-500 rounded-md mr-2 bg-red-400" @click="deleteLetter()">Delete</button>',
+  template: `
+    <button
+      class="w-1/4 h-12 border-none rounded-md mr-2 bg-sky-600 text-white font-bold"
+      @click="deleteLetter()">
+        Delete
+    </button>`,
   methods: {
     deleteLetter: function() {
       if (this.$store.state.gameSettings.currCol == 0) {
@@ -48,7 +53,12 @@ app.component('keyboard-delete', {
 })
 
 app.component('keyboard-enter', {
-  template: '<button class="w-1/4 h-8 border border-slate-500 rounded-md bg-blue-500" @click="checkWord()">Enter</button>',
+  template: `
+    <button
+      class="w-1/4 h-12 border-none rounded-md  bg-sky-600 text-white font-bold"
+      @click="checkWord()">
+        Enter
+    </button>`,
 })
 
 app.component('keyboard', {

@@ -65,12 +65,11 @@ app.mixin({
 
       // check for win-loss
       if (correctLetter.every((cl) => cl == 1)) {
-        this.$store.state.gameSettings.messageColor = "text-green";
         this.$store.state.gameSettings.message = "You win!";
-        this.$store.state.gameSettings.gameWon = true;
+        this.$store.state.gameSettings.playAgain = true;
       } else if (currRow == 5) {
-        this.$store.state.gameSettings.messageColor = "text-red";
-        this.$store.state.gameSettings.message = "You lost!  Word was \"" + this.$store.state.gameSettings.theWord + "\".";
+        this.$store.state.gameSettings.message = "Word was \"" + this.$store.state.gameSettings.theWord + "\".";
+        this.$store.state.gameSettings.playAgain = true;
       } else {
         this.$store.state.gameSettings.currRow += 1;
         this.$store.state.gameSettings.currCol = 0;
@@ -87,11 +86,12 @@ app.mixin({
       this.$store.state.gameSettings.currRow = 0;
       this.$store.state.gameSettings.currCol = 0;
       this.$store.state.gameSettings.message = '';
-      this.$store.state.gameSettings.gameWon = false;
+      this.$store.state.gameSettings.playAgain = false;
 
       const maxNum = this.$store.state.wordList.maxNum;
       const randNum = Math.floor(Math.random() * maxNum);
       this.$store.state.gameSettings.theWord = this.$store.state.wordList.words[randNum].toUpperCase();
+      this.$store.state.gameSettings.theWord = 'HELLO';
     },
   }
 })

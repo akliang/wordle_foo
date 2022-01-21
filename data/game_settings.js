@@ -55,7 +55,7 @@ const gameSettings = {
       theWord: '',
       message: '',
       messageColor: '',
-      gameWon: false,
+      playAgain: false,
     }
   },
 }

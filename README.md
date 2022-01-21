@@ -18,6 +18,9 @@ Feel free to fork or open pull requests!
 - dark mode
 - footer
 - add stat tracking
+- move messages and gray/yellow/green to game settings
+- add in "?" modal
+- add in settings modal
 
 # Credit
 

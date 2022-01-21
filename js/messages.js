@@ -1,9 +1,10 @@
 app.component('messages', {
   template: `
-    <div class="message-wrapper" v-bind:class="this.$store.state.gameSettings.messageColor">
+    <div class="w-full h-6 flex-col justify-center items-center m-2 text-center">
       {{ this.$store.state.gameSettings.message }}
-      <span v-if="this.$store.state.gameSettings.gameWon">
-        <a href="#" @click="initializeGame()">Play again?</a>
-      </span>
+    
+      <template v-if="this.$store.state.gameSettings.playAgain">
+        <button @click="initializeGame()">Play again?</button>
+      </template>
     </div>`,
 })
