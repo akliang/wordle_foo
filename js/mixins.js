@@ -4,7 +4,7 @@ app.mixin({
       // make sure 5 letters are submitted
       if (this.$store.state.gameSettings.currCol < 5) {
         this.$store.state.gameSettings.messageColor = "";
-        this.$store.state.gameSettings.message = "Less than 5 letters submitted.";
+        this.$store.state.gameSettings.message = this.$store.state.gameSettings.messageNotEnoughLetters;
         return;
       }
 
@@ -14,12 +14,20 @@ app.mixin({
       const theWord = this.$store.state.gameSettings.theWord;
       const allWords = this.$store.state.wordList.words;
 
+      // check for staging loophole
+      if (this.$store.state.gameSettings.isStaging) {
+        if (currLetters.join('') == "LLLLL") {
+          this.$store.state.gameSettings.message = this.$store.state.gameSettings.messageYouLose + this.$store.state.gameSettings.theWord + "\".";
+          this.$store.state.gameSettings.playAgain = true;
+          return;
+        }
+      }
 
       // first check that the submitted word is a valid word
       const nowWord = currLetters.join('').toLowerCase();
       if (allWords.indexOf(nowWord) == -1) {
         this.$store.state.gameSettings.messageColor = "";
-        this.$store.state.gameSettings.message = "Not a valid word";
+        this.$store.state.gameSettings.message = this.$store.state.gameSettings.messageNotValidWord;
         return;
       }
 
@@ -65,10 +73,10 @@ app.mixin({
 
       // check for win-loss
       if (correctLetter.every((cl) => cl == 1)) {
-        this.$store.state.gameSettings.message = "You win!";
+        this.$store.state.gameSettings.message = this.$store.state.gameSettings.messageYouWin;
         this.$store.state.gameSettings.playAgain = true;
       } else if (currRow == 5) {
-        this.$store.state.gameSettings.message = "Word was \"" + this.$store.state.gameSettings.theWord + "\".";
+        this.$store.state.gameSettings.message = this.$store.state.gameSettings.messageYouLose + this.$store.state.gameSettings.theWord + "\".";
         this.$store.state.gameSettings.playAgain = true;
       } else {
         this.$store.state.gameSettings.currRow += 1;
@@ -93,8 +101,8 @@ app.mixin({
       this.$store.state.gameSettings.theWord = this.$store.state.wordList.words[randNum].toUpperCase();
 
       // special debug case for development
-      const URL = location.href;
-      if (URL.match("staging")) {
+      if (location.href.match("staging")) {
+        this.$store.state.gameSettings.isStaging = true; 
         this.$store.state.gameSettings.theWord = 'HELLO';
       }
     },

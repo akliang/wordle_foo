@@ -54,8 +54,12 @@ const gameSettings = {
       currCol: 0,
       theWord: '',
       message: '',
-      messageColor: '',
+      messageNotEnoughLetters: 'Not enough letters.',
+      messageNotValidWord: 'Not a valid word.',
+      messageYouWin: 'You win!',
+      messageYouLose: 'Word was ',
       playAgain: false,
+      isStaging: false,
     }
   },
 }
