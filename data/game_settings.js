@@ -1,7 +1,7 @@
 const gameSettings = {
   state() {
     return { 
-      alphabetList: ['Q','W','E','R','T','Y','U','I','O','P','A','S','D','F','G','H','J','K','L','Z','X','C','V','B','N','M',],
+      alphabetList: ['Q','W','E','R','T','Y','U','I','O','P','A','S','D','F','G','H','J','K','L','Z','X','C','V','B','N','M','?'],
       defaultLetterParams: [
         { letterVal: 'Q', isGreen: false, isYellow: false, isGray: false},
         { letterVal: 'W', isGreen: false, isYellow: false, isGray: false},
@@ -54,11 +54,15 @@ const gameSettings = {
       currCol: 0,
       theWord: '',
       message: '',
+      playAgain: false,
       messageNotEnoughLetters: 'Not enough letters.',
       messageNotValidWord: 'Not a valid word.',
       messageYouWin: 'You win!',
       messageYouLose: 'Word was ',
-      playAgain: false,
+      colorWhite: 'bg-white',
+      colorGray: 'bg-gray-400',
+      colorYellow: 'bg-yellow-200',
+      colorGreen: 'bg-green-400',
       isStaging: false,
     }
   },
