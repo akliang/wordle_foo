@@ -3,10 +3,10 @@ app.component('letter-square', {
   computed: {
     colorCheck() {
       switch(this.$store.state.gameSettings.gridColors[this.myRow][this.myCol]) {
-        case 0: return "white";
-        case 1: return "bg-gray-400";
-        case 2: return "bg-yellow-200";
-        case 3: return "bg-green-400";
+        case 0: return this.$store.state.gameSettings.colorWhite;
+        case 1: return this.$store.state.gameSettings.colorGray;
+        case 2: return this.$store.state.gameSettings.colorYellow;
+        case 3: return this.$store.state.gameSettings.colorGreen;
       }
     }
   },
