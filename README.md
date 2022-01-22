@@ -18,8 +18,8 @@ Feel free to fork or open pull requests!
 - dark mode
 - footer
 - add stat tracking
-- add in "?" modal
 - add in settings modal
+- change vue and tailwind cdn based on prod/dev
 
 # Credit
 
