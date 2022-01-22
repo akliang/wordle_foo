@@ -7,6 +7,8 @@
         Wordle!
       </div>
       <div class="h-full px-8 pt-6 pb-16">
+        <question-modal v-if="this.$store.state.gameSettings.questionModal"></question-modal>
+
         <div id=upperGrid class="h-1/2">
           <play-grid></play-grid>
         </div>

@@ -31,6 +31,12 @@ app.component('keyboard-key', {
   },
   methods: {
     placeLetter: function(letterVal) {
+      // send question mark to the modal mixin
+      if (letterVal == '?') {
+        this.questionModal();
+        return;
+      }
+
       if (this.$store.state.gameSettings.currCol == 5) {
         // if end of row already, do nothing
         return false;

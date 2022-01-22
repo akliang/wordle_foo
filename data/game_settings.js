@@ -54,6 +54,7 @@ const gameSettings = {
       currCol: 0,
       theWord: '',
       message: '',
+      questionModal: false,
       playAgain: false,
       messageNotEnoughLetters: 'Not enough letters.',
       messageNotValidWord: 'Not a valid word.',

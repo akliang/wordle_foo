@@ -17,7 +17,7 @@ app.mixin({
       // check for staging loophole
       if (this.$store.state.gameSettings.isStaging) {
         if (currLetters.join('') == "LLLLL") {
-          this.$store.state.gameSettings.message = this.$store.state.gameSettings.messageYouLose + this.$store.state.gameSettings.theWord + "\".";
+          this.$store.state.gameSettings.message = this.$store.state.gameSettings.messageYouLose + '"' + this.$store.state.gameSettings.theWord + '".';
           this.$store.state.gameSettings.playAgain = true;
           return;
         }
@@ -105,6 +105,10 @@ app.mixin({
         this.$store.state.gameSettings.isStaging = true; 
         this.$store.state.gameSettings.theWord = 'HELLO';
       }
+    },
+
+    questionModal: function() {
+      this.$store.state.gameSettings.questionModal = !this.$store.state.gameSettings.questionModal;
     },
   }
 })
