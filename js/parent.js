@@ -3,19 +3,17 @@
       this.initializeGame();
     },
     template: `
-      <div id=topTitle class="text-4xl font-bold text-slate-800 font-mono flex justify-center items-center pt-10">
-        Wordle!
-      </div>
-      <div class="h-full px-8 pt-6 pb-16">
+      <div class="px-8 pt-10 pb-16">
         <question-modal v-if="this.$store.state.gameSettings.questionModal"></question-modal>
 
-        <div id=upperGrid class="h-1/2">
+        <div class="h-96 md:w-96 md:mx-auto">
           <play-grid></play-grid>
         </div>
-        <div id=lowerGrid class="h-1/2">
+        <div class="h-14 w-full flex justify-center items-center">
           <messages></messages>
-          <keyboard></keyboard>
         </div>
+        <keyboard></keyboard>
+
       </div>
     `
   })

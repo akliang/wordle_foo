@@ -93,7 +93,7 @@ app.mixin({
       this.$store.state.gameSettings.gridColors = JSON.parse(JSON.stringify(this.$store.state.gameSettings.defaultGridColors));
       this.$store.state.gameSettings.currRow = 0;
       this.$store.state.gameSettings.currCol = 0;
-      this.$store.state.gameSettings.message = '';
+      this.$store.state.gameSettings.message = 'Welcome to Wordle!';
       this.$store.state.gameSettings.playAgain = false;
 
       const maxNum = this.$store.state.wordList.maxNum;
