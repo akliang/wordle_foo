@@ -4,7 +4,7 @@ app.component('messages', {
       {{ this.$store.state.gameSettings.message }}
     
       <template v-if="this.$store.state.gameSettings.playAgain">
-        <button @click="initializeGame()">Play again?</button>
+        <button @click="initializeGame()" class="bg-sky-600 text-white px-2 py-0.5 rounded-md">Play again?</button>
       </template>
     </div>`,
 })
