@@ -4,7 +4,7 @@ app.component('keyboard-key', {
   },
   template: `
     <button 
-      class="w-8 h-12 border border-slate-300 rounded-md m-0.5 md:w-14 md:h-20"
+      class="w-8 h-12 border border-slate-300 rounded-md m-0.5 md:w-14 md:h-20 touch-manipulation"
       v-bind:value=letterVal
       v-bind:class="colorState"
       @click="placeLetter(letterVal)">
@@ -53,7 +53,7 @@ app.component('keyboard-key', {
 app.component('keyboard-delete', {
   template: `
     <button
-      class="w-1/4 h-12 border-none rounded-md bg-sky-600 text-white font-bold mr-2"
+      class="w-1/4 h-12 border-none rounded-md bg-sky-600 text-white font-bold mr-2 touch-manipulation"
       @click="deleteLetter()">
         Delete
     </button>`,
@@ -76,7 +76,7 @@ app.component('keyboard-delete', {
 app.component('keyboard-enter', {
   template: `
     <button
-      class="w-1/4 h-12 border-none rounded-md bg-sky-600 text-white font-bold"
+      class="w-1/4 h-12 border-none rounded-md bg-sky-600 text-white font-bold touch-manipulation"
       @click="checkWord()">
         Enter
     </button>`,
