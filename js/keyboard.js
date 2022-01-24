@@ -88,9 +88,9 @@ app.component('keyboard-enter', {
 app.component('keyboard-settings', {
   template: `
     <button
-      class="w-1/4 h-12 border-none rounded-md bg-sky-600 text-white font-bold mr-2 touch-manipulation dark:bg-sky-400"
+      class="h-12 px-4 border-none rounded-md bg-sky-600 text-white font-bold mr-2 touch-manipulation dark:bg-sky-400"
       @click="settingsModal()">
-        Settings
+        <i class="fas fa-cog text-xl"></i>
     </button>`,
 })
 
