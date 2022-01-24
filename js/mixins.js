@@ -110,5 +110,20 @@ app.mixin({
     questionModal: function() {
       this.$store.state.gameSettings.questionModal = !this.$store.state.gameSettings.questionModal;
     },
+
+    settingsModal: function() {
+      this.$store.state.gameSettings.settingsModal = !this.$store.state.gameSettings.settingsModal;
+    },
+
+    darkMode: function() {
+      // this.$store.state.gameSettings.darkMode = !this.$store.state.gameSettings.darkMode;
+      if (this.$store.state.gameSettings.darkMode) {
+        this.$store.state.gameSettings.darkMode = false;
+        document.documentElement.classList.remove('dark');
+      } else {
+        this.$store.state.gameSettings.darkMode = true;
+        document.documentElement.classList.add('dark');
+      }
+    },
   }
 })

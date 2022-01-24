@@ -16,15 +16,18 @@ app.component('keyboard-key', {
       const idx = this.$store.state.gameSettings.alphabetList.indexOf(this.letterVal);
       const nowLetter = this.$store.state.gameSettings.letterParams[idx];
 
-      let output = this.$store.state.gameSettings.colorWhite;
+      let output = this.$store.state.gameSettings.darkMode ? this.$store.state.gameSettings.colorWhiteDark : this.$store.state.gameSettings.colorWhite;
       if (nowLetter.isGray) {
-        output += " " + this.$store.state.gameSettings.colorGray;
+        output += " ";
+        output += this.$store.state.gameSettings.darkMode ? this.$store.state.gameSettings.colorGrayDark : this.$store.state.gameSettings.colorGray;
       }
       if (nowLetter.isYellow) {
-        output += " " + this.$store.state.gameSettings.colorYellow;
+        output += " ";
+        output += this.$store.state.gameSettings.darkMode ? this.$store.state.gameSettings.colorYellowDark : this.$store.state.gameSettings.colorYellow;
       }
       if (nowLetter.isGreen) {
-        output += " " + this.$store.state.gameSettings.colorGreen;
+        output += " ";
+        output += this.$store.state.gameSettings.darkMode ? this.$store.state.gameSettings.colorGreenDark : this.$store.state.gameSettings.colorGreen;
       }
       return output;
     }
@@ -53,7 +56,7 @@ app.component('keyboard-key', {
 app.component('keyboard-delete', {
   template: `
     <button
-      class="w-1/4 h-12 border-none rounded-md bg-sky-600 text-white font-bold mr-2 touch-manipulation"
+      class="w-1/4 h-12 border-none rounded-md bg-sky-600 text-white font-bold mr-2 touch-manipulation dark:bg-sky-400"
       @click="deleteLetter()">
         Delete
     </button>`,
@@ -76,9 +79,18 @@ app.component('keyboard-delete', {
 app.component('keyboard-enter', {
   template: `
     <button
-      class="w-1/4 h-12 border-none rounded-md bg-sky-600 text-white font-bold touch-manipulation"
+      class="w-1/4 h-12 border-none rounded-md bg-sky-600 text-white font-bold touch-manipulation dark:bg-sky-400"
       @click="checkWord()">
         Enter
+    </button>`,
+})
+
+app.component('keyboard-settings', {
+  template: `
+    <button
+      class="w-1/4 h-12 border-none rounded-md bg-sky-600 text-white font-bold mr-2 touch-manipulation dark:bg-sky-400"
+      @click="settingsModal()">
+        Settings
     </button>`,
 })
 
@@ -118,6 +130,7 @@ app.component('keyboard', {
     </div>
 
     <div class="flex justify-center mt-2">
+      <keyboard-settings></keyboard-settings>
       <keyboard-delete></keyboard-delete>
       <keyboard-enter></keyboard-enter>
     </div>

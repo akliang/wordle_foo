@@ -1,6 +1,6 @@
 app.component('messages', {
   template: `
-    <span class="touch-manipulation select-none">
+    <span class="touch-manipulation select-none dark:text-slate-200">
       {{ this.$store.state.gameSettings.message }}
     
       <template v-if="this.$store.state.gameSettings.playAgain">
