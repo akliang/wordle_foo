@@ -4,7 +4,7 @@ app.component('keyboard-key', {
   },
   template: `
     <button 
-      class="w-8 h-12 border border-slate-300 dark:border-slate-600 text-black dark:text-white rounded-md m-0.5 md:w-14 md:h-20 touch-manipulation"
+      class="w-8 h-10 border border-slate-300 dark:border-slate-600 text-black dark:text-white rounded-md m-0.5 md:w-14 md:h-20 touch-manipulation"
       v-bind:value=letterVal
       v-bind:class="colorState"
       @click="placeLetter(letterVal)">
@@ -56,7 +56,7 @@ app.component('keyboard-key', {
 app.component('keyboard-delete', {
   template: `
     <button
-      class="w-1/4 h-12 border-none rounded-md bg-sky-600 text-white font-bold mr-2 touch-manipulation dark:bg-sky-400"
+      class="w-1/4 h-10 border-none rounded-md bg-sky-600 text-white font-bold mr-2 touch-manipulation dark:bg-sky-400"
       @click="deleteLetter()">
         Delete
     </button>`,
@@ -79,7 +79,7 @@ app.component('keyboard-delete', {
 app.component('keyboard-enter', {
   template: `
     <button
-      class="w-1/4 h-12 border-none rounded-md bg-sky-600 text-white font-bold touch-manipulation dark:bg-sky-400"
+      class="w-1/4 h-10 border-none rounded-md bg-sky-600 text-white font-bold touch-manipulation dark:bg-sky-400"
       @click="checkWord()">
         Enter
     </button>`,
@@ -88,7 +88,7 @@ app.component('keyboard-enter', {
 app.component('keyboard-settings', {
   template: `
     <button
-      class="h-12 px-4 border-none rounded-md bg-sky-600 text-white font-bold mr-2 touch-manipulation dark:bg-sky-400"
+      class="h-10 px-4 border-none rounded-md bg-sky-600 text-white font-bold mr-2 touch-manipulation dark:bg-sky-400"
       @click="settingsModal()">
         <i class="fas fa-cog text-xl"></i>
     </button>`,
