@@ -8,19 +8,16 @@ Feel free to fork or open pull requests!
 
 # Wishlist
 
-- seed in get param to sync up game with friend
-- refactor for mobile first
-- type with keyboard instead of touch screen
 - stats keeping
 - sharing
 - testing
-- responsive
-- dark mode
-- footer
-- add stat tracking
-- add in settings modal
+- seed in get param to sync up game with friend
 - change vue and tailwind cdn based on prod/dev
+- type with keyboard instead of touch screen
+- refactor mixins into multiple files?
 
 # Credit
 
 Word list: https://github.com/charlesreid1/five-letter-words/blob/master/sgb-words.txt
+Toggle button: https://codepen.io/lhermann/pen/EBGZRZ
+Modal overlay: https://tailwindui.com/components/application-ui/overlays/modals
