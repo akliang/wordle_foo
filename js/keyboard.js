@@ -4,7 +4,7 @@ app.component('keyboard-key', {
   },
   template: `
     <button 
-      class="w-8 h-10 border border-slate-300 dark:border-slate-600 text-black dark:text-white rounded-md m-0.5 md:w-14 md:h-20 touch-manipulation"
+      class="w-8 h-10 border border-slate-300 dark:border-slate-500 text-black dark:text-white rounded-md m-0.5 md:w-14 md:h-20 touch-manipulation"
       v-bind:value=letterVal
       v-bind:class="colorState"
       @click="placeLetter(letterVal)">
