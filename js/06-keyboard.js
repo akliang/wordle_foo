@@ -15,20 +15,18 @@ app.component('keyboard-key', {
     colorState: function() {
       const idx = this.$store.state.gameSettings.alphabetList.indexOf(this.letterVal);
       const nowLetter = this.$store.state.gameSettings.letterParams[idx];
+      let output = '';
 
-      let output = this.$store.state.gameSettings.darkMode ? this.$store.state.gameSettings.colorWhiteDark : this.$store.state.gameSettings.colorWhite;
-      if (nowLetter.isGray) {
-        output += " ";
-        output += this.$store.state.gameSettings.darkMode ? this.$store.state.gameSettings.colorGrayDark : this.$store.state.gameSettings.colorGray;
-      }
-      if (nowLetter.isYellow) {
-        output += " ";
-        output += this.$store.state.gameSettings.darkMode ? this.$store.state.gameSettings.colorYellowDark : this.$store.state.gameSettings.colorYellow;
-      }
       if (nowLetter.isGreen) {
-        output += " ";
-        output += this.$store.state.gameSettings.darkMode ? this.$store.state.gameSettings.colorGreenDark : this.$store.state.gameSettings.colorGreen;
+        output = this.$store.state.gameSettings.darkMode ? this.$store.state.gameSettings.colorGreenDark : this.$store.state.gameSettings.colorGreen;
+      } else if (nowLetter.isYellow) {
+        output = this.$store.state.gameSettings.darkMode ? this.$store.state.gameSettings.colorYellowDark : this.$store.state.gameSettings.colorYellow;
+      } else if (nowLetter.isGray) {
+        output = this.$store.state.gameSettings.darkMode ? this.$store.state.gameSettings.colorGrayDark : this.$store.state.gameSettings.colorGray;
+      } else {
+        output = this.$store.state.gameSettings.darkMode ? this.$store.state.gameSettings.colorWhiteDark : this.$store.state.gameSettings.colorWhite;
       }
+
       return output;
     }
   },
