@@ -66,7 +66,7 @@ const gameSettings = {
       colorGray: 'bg-gray-400',
       colorYellow: 'bg-yellow-200',
       colorGreen: 'bg-green-400',
-      colorWhiteDark: 'dark:bg-slate-400',
+      colorWhiteDark: 'dark:bg-slate-800',
       colorGrayDark: 'dark:bg-gray-600',
       colorYellowDark: 'dark:bg-yellow-600',
       colorGreenDark: 'dark:bg-green-600',

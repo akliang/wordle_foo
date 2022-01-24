@@ -22,7 +22,7 @@ app.component('letter-square', {
   },
   template: `
     <div
-      class="w-1/6 h-full border border-slate-300 rounded flex mr-2 last:mr-0 justify-center items-center text-2xl touch-manipulation dark:bg-slate-400 dark:bg-slate-600 dark:text-slate-200"
+      class="w-1/6 h-full border border-slate-300 dark:border-slate-600 rounded flex mr-2 last:mr-0 justify-center items-center text-2xl touch-manipulation dark:text-slate-200"
       v-bind:class="colorCheck">
         {{ this.$store.state.gameSettings.gridVals[myRow][myCol] }}
     </div>`
