@@ -19,10 +19,10 @@
 
   <!-- tailwind css -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="data/tailwind_config.js"></script>
+  <script src="./data/tailwind_config.js"></script>
 
   <!-- custom css -->
-  <link rel="stylesheet" href="css/customs.css">
+  <link rel="stylesheet" href="./css/customs.css">
 
   <!-- font awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/fontawesome.min.css" integrity="sha512-8jdwayz5n8F2cnW26l9vpV6+yGOcRAqz6HTu+DQ3FtVIAts2gTdlFZOGpYhvBMXkWEgxPN3Y22UWyZXuDowNLA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -32,19 +32,21 @@
   <script src="https://unpkg.com/vue@3.2.27/dist/vue.global.js" defer></script>
   <script src="https://unpkg.com/vuex@4.0.2/dist/vuex.global.js" defer></script>
 
-  <!-- custom vue components -->
-  <script src="./js/start.js" defer></script>
+  <!-- load data files -->
   <script src="./data/game_settings.js" defer></script>
   <script src="./data/word_list_5letters.js" defer></script>
-  <script src="./js/vuex.js" defer></script>
-  <script src="./js/mixins.js" defer></script>
-  <script src="./js/parent.js" defer></script>
-  <script src="./js/play_grid.js" defer></script>
-  <script src="./js/messages.js" defer></script>
-  <script src="./js/keyboard.js" defer></script>
-  <script src="./js/question_modal.js" defer></script>
-  <script src="./js/settings_modal.js" defer></script>
-  <script src="./js/finish.js" defer></script>
+
+  <!-- custom vue components -->
+  <script src="./js/00-start.js" defer></script>
+  <script src="./js/01-vuex.js" defer></script>
+  <script src="./js/02-mixins.js" defer></script>
+  <script src="./js/03-parent.js" defer></script>
+  <script src="./js/04-play_grid.js" defer></script>
+  <script src="./js/05-messages.js" defer></script>
+  <script src="./js/06-keyboard.js" defer></script>
+  <script src="./js/07-question_modal.js" defer></script>
+  <script src="./js/08-settings_modal.js" defer></script>
+  <script src="./js/09-finish.js" defer></script>
 
   <title>Wordle!</title>
 </head>
