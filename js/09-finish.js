@@ -1,1 +1,1 @@
-const vm = app.mount('#vue-start')
+const vm = app.mount('#vue-start');

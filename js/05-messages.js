@@ -7,4 +7,4 @@ app.component('messages', {
         <button @click="initializeGame()" class="bg-sky-600 text-white px-2 py-0.5 rounded-md">Play again?</button>
       </template>
     </span>`,
-})
+});

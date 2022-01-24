@@ -3,6 +3,6 @@ var store = Vuex.createStore({
     gameSettings: gameSettings,
     wordList: wordList,
   }
-})
+});
 
 app.use(store);

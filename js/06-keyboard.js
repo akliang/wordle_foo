@@ -49,7 +49,7 @@ app.component('keyboard-key', {
       }
     },
   }
-})
+});
 
 app.component('keyboard-delete', {
   template: `
@@ -72,7 +72,7 @@ app.component('keyboard-delete', {
       }
     }
   }
-})
+});
 
 app.component('keyboard-enter', {
   template: `
@@ -81,7 +81,7 @@ app.component('keyboard-enter', {
       @click="checkWord()">
         Enter
     </button>`,
-})
+});
 
 app.component('keyboard-settings', {
   template: `
@@ -90,7 +90,7 @@ app.component('keyboard-settings', {
       @click="settingsModal()">
         <i class="fas fa-cog text-xl"></i>
     </button>`,
-})
+});
 
 app.component('keyboard', {
   props: ['letterParams'],
@@ -134,4 +134,4 @@ app.component('keyboard', {
     </div>
   
   `
-})
+});

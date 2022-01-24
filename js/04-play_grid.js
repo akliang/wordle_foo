@@ -26,7 +26,7 @@ app.component('letter-square', {
       v-bind:class="colorCheck">
         {{ this.$store.state.gameSettings.gridVals[myRow][myCol] }}
     </div>`
-})
+});
 
 app.component('letter-row', {
   props: ['myRow'],
@@ -34,7 +34,7 @@ app.component('letter-row', {
     <template v-for="n in 5">
       <letter-square :my-row="myRow" :my-col="n-1"></letter-square>
     </template>`
-})
+});
 
 app.component('play-grid', {
   template: `
@@ -43,4 +43,4 @@ app.component('play-grid', {
       <letter-row :my-row="n-1"></letter-row>
     </div>
   </div>`
-})
+});

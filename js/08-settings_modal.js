@@ -52,4 +52,4 @@ app.component('settings-modal', {
         </div>
       </div>
     </div>`,
-})
+});

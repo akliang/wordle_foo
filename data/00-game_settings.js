@@ -73,4 +73,4 @@ const gameSettings = {
       isStaging: false,
     }
   },
-}
+};

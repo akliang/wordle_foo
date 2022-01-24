@@ -46,4 +46,4 @@ app.component('question-modal', {
         </div>
       </div>
     </div>`,
-})
+});
