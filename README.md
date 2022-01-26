@@ -15,6 +15,7 @@ Feel free to fork or open pull requests!
 - change vue and tailwind cdn based on prod/dev
 - type with keyboard instead of touch screen
 - refactor mixins into multiple files?
+- reformat question modal for desktop
 
 # Credit
 
