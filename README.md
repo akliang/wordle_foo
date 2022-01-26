@@ -6,6 +6,20 @@ A portable (offline-playable) version of Wordle (https://www.powerlanguage.co.uk
 
 Feel free to fork or open pull requests!
 
+# Testing
+
+Testing is done via Selenium and is located in the selenium_testing folder.
+
+Setup steps:
+```
+python3 -m venv venv
+. venv/bin/activate
+python3 -m pip install --upgrade pip
+pip install wheel
+pip install -r requirements.txt
+pytest test_game.py
+```
+
 # Wishlist
 
 - stats keeping
