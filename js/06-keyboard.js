@@ -2,15 +2,6 @@ app.component('keyboard-key', {
   props: {
     letterVal: String,
   },
-  template: `
-    <button 
-      class="w-8 h-10 border border-slate-300 dark:border-slate-500 text-black dark:text-white rounded-md m-0.5 md:w-14 md:h-20 touch-manipulation"
-      v-bind:value=letterVal
-      v-bind:class="colorState"
-      @click="placeLetter(letterVal)">
-        {{ letterVal }}
-    </button>
-  `,
   computed: {
     colorState: function() {
       const idx = this.$store.state.gameSettings.alphabetList.indexOf(this.letterVal);
@@ -28,6 +19,13 @@ app.component('keyboard-key', {
       }
 
       return output;
+    },
+    makeID: function() {
+      if (this.letterVal == "?") {
+        return "key-question";
+      } else {
+        return "key-" + this.letterVal;
+      }
     }
   },
   methods: {
@@ -48,13 +46,24 @@ app.component('keyboard-key', {
         this.$store.state.gameSettings.currCol += 1;
       }
     },
-  }
+  },
+  template: `
+    <button 
+      class="w-8 h-10 border border-slate-300 dark:border-slate-500 text-black dark:text-white rounded-md m-0.5 md:w-14 md:h-20 touch-manipulation"
+      v-bind:value=letterVal
+      v-bind:class="colorState"
+      v-bind:id="makeID"
+      @click="placeLetter(letterVal)">
+        {{ letterVal }}
+    </button>
+  `,
 });
 
 app.component('keyboard-delete', {
   template: `
     <button
       class="w-1/4 h-10 border-none rounded-md bg-sky-600 text-white font-bold mr-2 touch-manipulation dark:bg-sky-400"
+      id="key-delete"
       @click="deleteLetter()">
         Delete
     </button>`,
@@ -78,6 +87,7 @@ app.component('keyboard-enter', {
   template: `
     <button
       class="w-1/4 h-10 border-none rounded-md bg-sky-600 text-white font-bold touch-manipulation dark:bg-sky-400"
+      id="key-enter"
       @click="checkWord()">
         Enter
     </button>`,
@@ -87,6 +97,7 @@ app.component('keyboard-settings', {
   template: `
     <button
       class="h-10 px-4 border-none rounded-md bg-sky-600 text-white font-bold mr-2 touch-manipulation dark:bg-sky-400"
+      id="key-settings"
       @click="settingsModal()">
         <i class="fas fa-cog text-xl"></i>
     </button>`,

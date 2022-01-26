@@ -17,13 +17,16 @@ app.component('letter-square', {
           case 3: return this.$store.state.gameSettings.colorGreen;
         }
       }
-      
+    },
+    makeID() {
+      return "grid-" + this.myRow + "-" + this.myCol;
     }
   },
   template: `
     <div
       class="w-1/6 h-full border border-slate-300 dark:border-slate-500 rounded flex mr-2 last:mr-0 justify-center items-center text-2xl touch-manipulation dark:text-slate-200"
-      v-bind:class="colorCheck">
+      v-bind:class="colorCheck"
+      v-bind:id="makeID">
         {{ this.$store.state.gameSettings.gridVals[myRow][myCol] }}
     </div>`
 });
