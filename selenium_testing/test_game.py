@@ -110,3 +110,4 @@ def test_all():
 # refactor driver into fixture
 # refactor input letters into method fixture
 # find a way to refresh message_box
+# find a way to run tests on headless server and/or Docker container
