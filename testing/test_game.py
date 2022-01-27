@@ -11,6 +11,8 @@ def driver_init(request):
   service = ChromeService(executable_path=ChromeDriverManager().install())
   options = ChromeOptions()
   options.add_argument("--headless")
+  options.add_argument("--remote-debugging-port=9222")
+  options.add_argument("--no-sandbox")
   driver = webdriver.Chrome(service=service, options=options)
   driver.get("http://wordle-staging.albertliang.xyz")
   driver.implicitly_wait(0.5)

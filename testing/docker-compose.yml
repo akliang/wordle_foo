@@ -1,0 +1,7 @@
+version: "3.9"
+services:
+  selenium:
+    build: .
+    volumes:
+      - .:/app/code
+    
