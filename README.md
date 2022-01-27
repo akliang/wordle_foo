@@ -23,21 +23,21 @@ pytest test_game.py
 # Wishlist
 
 - stats keeping
-- sharing
-- testing
 - seed in get param to sync up game with friend
 - change vue and tailwind cdn based on prod/dev
 - type with keyboard instead of touch screen
 - refactor mixins into multiple files?
-- reformat question modal for desktop
 
 # Testing wishlist
 
 - find a way to run tests on headless server and/or Docker container
-- https://www.lambdatest.com/blog/end-to-end-tutorial-for-pytest-fixtures-with-examples/
 - test grid colors
 - test white/gray/yellow/green
 - test yellow to green override
+
+# Testing references
+
+- https://www.lambdatest.com/blog/end-to-end-tutorial-for-pytest-fixtures-with-examples/
 - https://www.javacodegeeks.com/2021/04/how-to-do-parameterization-in-pytest-with-selenium.html
 
 # Credit
