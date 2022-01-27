@@ -4,4 +4,5 @@ services:
     build: .
     volumes:
       - .:/app/code
+    command: pytest --verbose test_game.py -x --pdb
     
