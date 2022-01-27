@@ -8,16 +8,13 @@ Feel free to fork or open pull requests!
 
 # Testing
 
-Testing is done via Selenium and is located in the selenium_testing folder.
+Testing is done via Selenium in a Docker container:
 
-Setup steps:
 ```
-python3 -m venv venv
-. venv/bin/activate
-python3 -m pip install --upgrade pip
-pip install wheel
-pip install -r requirements.txt
-pytest test_game.py
+cd testing/
+docker-compose build
+docker-compose up
+# note, will automatically drop you into Python Debugger (pdb) when it hits the first FAIL
 ```
 
 # Wishlist
@@ -25,12 +22,9 @@ pytest test_game.py
 - stats keeping
 - seed in get param to sync up game with friend
 - change vue and tailwind cdn based on prod/dev
-- type with keyboard instead of touch screen
-- refactor mixins into multiple files?
 
 # Testing wishlist
 
-- find a way to run tests on headless server and/or Docker container
 - test grid colors
 - test white/gray/yellow/green
 - test yellow to green override
