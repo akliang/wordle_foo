@@ -43,6 +43,6 @@ pytest test_game.py
 
 # Credit
 
-Word list: https://github.com/charlesreid1/five-letter-words/blob/master/sgb-words.txt
-Toggle button: https://codepen.io/lhermann/pen/EBGZRZ
-Modal overlay: https://tailwindui.com/components/application-ui/overlays/modals
+- Word list: https://github.com/charlesreid1/five-letter-words/blob/master/sgb-words.txt
+- Toggle button: https://codepen.io/lhermann/pen/EBGZRZ
+- Modal overlay: https://tailwindui.com/components/application-ui/overlays/modals
