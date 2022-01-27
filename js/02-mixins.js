@@ -125,5 +125,19 @@ app.mixin({
         document.documentElement.classList.add('dark');
       }
     },
+
+    shareOut: function() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Wordle!',
+          url: 'https://wordle.albertliang.xyz'
+        }).then(() => {
+          // console.log('Thanks for sharing!');
+        })
+        .catch(console.error);
+      } else {
+        console.log("Oops, sharing not supported.");
+      }
+    }
   }
 });
