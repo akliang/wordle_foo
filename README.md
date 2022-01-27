@@ -39,6 +39,7 @@ pytest test_game.py
 
 - https://www.lambdatest.com/blog/end-to-end-tutorial-for-pytest-fixtures-with-examples/
 - https://www.javacodegeeks.com/2021/04/how-to-do-parameterization-in-pytest-with-selenium.html
+- https://stackoverflow.com/questions/41460168/what-is-difference-between-xvfb-and-chromedriver-and-when-to-use-them
 
 # Credit
 
