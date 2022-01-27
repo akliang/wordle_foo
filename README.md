@@ -31,6 +31,15 @@ pytest test_game.py
 - refactor mixins into multiple files?
 - reformat question modal for desktop
 
+# Testing wishlist
+
+- find a way to run tests on headless server and/or Docker container
+- https://www.lambdatest.com/blog/end-to-end-tutorial-for-pytest-fixtures-with-examples/
+- test grid colors
+- test white/gray/yellow/green
+- test yellow to green override
+- https://www.javacodegeeks.com/2021/04/how-to-do-parameterization-in-pytest-with-selenium.html
+
 # Credit
 
 Word list: https://github.com/charlesreid1/five-letter-words/blob/master/sgb-words.txt
