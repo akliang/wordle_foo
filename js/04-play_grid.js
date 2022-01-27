@@ -1,7 +1,7 @@
 app.component('letter-square', {
   props: ['myRow','myCol'],
   computed: {
-    colorCheck() {
+    colorCheck: function() {
       if (this.$store.state.gameSettings.darkMode) {
         switch(this.$store.state.gameSettings.gridColors[this.myRow][this.myCol]) {
           case 0: return this.$store.state.gameSettings.colorWhiteDark;
@@ -18,7 +18,7 @@ app.component('letter-square', {
         }
       }
     },
-    makeID() {
+    makeID: function() {
       return "grid-" + this.myRow + "-" + this.myCol;
     }
   },
