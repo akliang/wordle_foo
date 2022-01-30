@@ -17,6 +17,7 @@ pipeline {
                 dir("./testing") {
                   // sh 'docker-compose up'
                   sh 'ls -la'
+                  sh 'docker-compose up'
                 }
             }
         }
@@ -25,5 +26,10 @@ pipeline {
                 echo 'Deploying....'
             }
         }
+    }
+    post {
+      always {
+        junit './testing/*.xml'
+      }
     }
 }
