@@ -17,7 +17,7 @@ pipeline {
                 dir("./testing") {
                   // sh 'docker-compose up'
                   sh 'ls -la'
-                  sh '/usr/local/bin/docker-compose up'
+                  sh 'docker-compose up'
                 }
             }
         }
