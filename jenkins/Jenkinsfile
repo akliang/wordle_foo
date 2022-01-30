@@ -4,12 +4,20 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                /* Wishlist:
+                - switch vue and tailwind from dev to prod files
+                - perform SCSS/LESS compiling
+                */
                 echo 'Building..'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
+                dir("../testing") {
+                  // sh 'docker-compose up'
+                  sh 'ls -la'
+                }
             }
         }
         stage('Deploy') {
