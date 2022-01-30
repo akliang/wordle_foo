@@ -14,7 +14,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                dir("../testing") {
+                dir("./testing") {
                   // sh 'docker-compose up'
                   sh 'ls -la'
                 }
