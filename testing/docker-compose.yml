@@ -4,5 +4,5 @@ services:
     build: .
     volumes:
       - .:/app/code
-    command: pytest --verbose test_game.py -x --pdb
+    command: pytest --verbose test_game.py -x --pdb --junitxml=./test_report.xml
     
