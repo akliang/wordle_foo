@@ -4,8 +4,4 @@ services:
     build: .
     volumes:
       - .:/app/code
-      - wordle_test_reports:/reports
-    command: pytest --verbose test_game.py -x --pdb --junitxml=/reports/wordle_test_report.xml
-
-volumes:
-  wordle_test_reports:
+    command: pytest --verbose test_game.py -x --pdb --junitxml=./wordle_test_report.xml

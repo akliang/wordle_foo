@@ -15,7 +15,6 @@ pipeline {
             steps {
                 echo 'Testing..'
                 dir("./testing") {
-                  // sh 'docker-compose up'
                   sh 'ls -la'
                   sh 'docker-compose up'
                 }
@@ -29,7 +28,7 @@ pipeline {
     }
     post {
       always {
-        junit '/reports/*.xml'
+        junit '../testing/*.xml'
       }
     }
 }

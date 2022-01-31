@@ -21,7 +21,5 @@ RUN groupadd -g 1000 user && adduser --disabled-password --gecos "" --gid 1000 -
 WORKDIR /app/code
 COPY requirements.txt .
 RUN pip install -r requirements.txt
-RUN mkdir /reports
-RUN chown user:user /reports
 
 USER user
