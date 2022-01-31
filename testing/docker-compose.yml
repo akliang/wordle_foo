@@ -1,7 +1,12 @@
 version: "3.9"
 services:
   selenium:
-    build: .
+    build: 
+      context: .
+      args:
+        USERID: $USERID
+        GROUPID: $GROUPID
     volumes:
       - .:/app/code
     command: pytest --verbose test_game.py -x --pdb --junitxml=./wordle_test_report.xml
+    user: $USERID
