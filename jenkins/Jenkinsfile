@@ -28,9 +28,7 @@ pipeline {
     }
     post {
       always {
-        dir("./testing") {
-          junit './*.xml'
-        } 
+        junit '**/*.xml'
       }
     }
 }
