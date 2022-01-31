@@ -16,10 +16,10 @@ RUN apt update && apt upgrade -y && DEBIAN_FRONTEND=noninteractive apt install -
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 RUN gdebi --non-interactive google-chrome-stable_current_amd64.deb
 
-RUN groupadd -g 1000 user && adduser --disabled-password --gecos "" --gid 1000 -u 1000 user
+RUN groupadd -g 1000 user && adduser --disabled-password --gecos "" --gid 1000 -u 1000 jenkins
 
 WORKDIR /app/code
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-USER user
+USER jenkins
