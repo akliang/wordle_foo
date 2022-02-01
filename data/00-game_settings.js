@@ -52,6 +52,7 @@ const gameSettings = {
       gridColors: '',
       currRow: 0,
       currCol: 0,
+      wordNum: 0,
       theWord: '',
       message: '',
       questionModal: false,

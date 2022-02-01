@@ -96,9 +96,19 @@ app.mixin({
       this.$store.state.gameSettings.message = 'Welcome to Wordle!';
       this.$store.state.gameSettings.playAgain = false;
 
-      const maxNum = this.$store.state.wordList.maxNum;
-      const randNum = Math.floor(Math.random() * maxNum);
-      this.$store.state.gameSettings.theWord = this.$store.state.wordList.words[randNum].toUpperCase();
+      // pick the word
+      let params = new URLSearchParams(document.location.search);
+      let n = parseInt(params.get("n"));
+      let wordNum = 0;
+      if (!isNaN(n)) {
+        wordNum = n;
+      } else {
+        const maxNum = this.$store.state.wordList.maxNum;
+        wordNum = Math.floor(Math.random() * maxNum);
+      }
+      history.pushState(null, '', '?n=' + wordNum);
+      this.$store.state.gameSettings.wordNum = wordNum;
+      this.$store.state.gameSettings.theWord = this.$store.state.wordList.words[wordNum].toUpperCase();
 
       // special debug case for development
       if (location.href.match("staging")) {
@@ -130,7 +140,7 @@ app.mixin({
       if (navigator.share) {
         navigator.share({
           title: 'Wordle!',
-          url: 'https://wordle.albertliang.xyz'
+          url: 'https://wordle.albertliang.xyz?n=' + this.$store.state.gameSettings.wordNum
         }).then(() => {
           // console.log('Thanks for sharing!');
         })
