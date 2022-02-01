@@ -151,10 +151,10 @@ app.mixin({
           textPayload += '\n';
         }
         textPayload += '\n';
+        textPayload += 'https://wordle.albertliang.xyz?n=' + this.$store.state.gameSettings.wordNum;
         
         navigator.share({
           title: 'Wordle!',
-          url: 'https://wordle.albertliang.xyz?n=' + this.$store.state.gameSettings.wordNum,
           text: textPayload
         }).then(() => {
           // console.log('Thanks for sharing!');
