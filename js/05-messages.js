@@ -1,13 +1,4 @@
 app.component('messages', {
-  // computed: {
-  //   checkShare: function() {
-  //     if (navigator.share) {
-  //       return true;
-  //     } else {
-  //       return false;
-  //     }
-  //   }
-  // },
   template: `
     <span class="touch-manipulation select-none dark:text-slate-200" id="message-box">
       {{ this.$store.state.gameSettings.message }}
