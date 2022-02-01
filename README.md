@@ -3,8 +3,8 @@
 A portable (offline-playable) version of Wordle (https://www.powerlanguage.co.uk/wordle/) with unlimited plays and (in the future) RPG elements.  Written completely in Vue3 using Vuex and Tailwind CSS.
 
 Currently hosted at:
-- Main branch: https://wordle.albertliang.xyz
-- Develop branch: https://wordle-staging.albertliang.xyz
+- Main branch: https://wordfoo.foostarstudio.com
+- Develop branch: https://wordfoo-staging.albertliang.xyz
 
 # Development
 

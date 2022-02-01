@@ -107,7 +107,7 @@ app.mixin({
       this.$store.state.gameSettings.gridColors = JSON.parse(JSON.stringify(this.$store.state.gameSettings.defaultGridColors));
       this.$store.state.gameSettings.currRow = 0;
       this.$store.state.gameSettings.currCol = 0;
-      this.$store.state.gameSettings.message = 'Welcome to Wordle!';
+      this.$store.state.gameSettings.message = 'Welcome to Wordfoo!';
       this.$store.state.gameSettings.playAgain = false;
 
       // special debug case for development
@@ -151,10 +151,10 @@ app.mixin({
           textPayload += '\n';
         }
         textPayload += '\n';
-        textPayload += 'https://wordle.albertliang.xyz?n=' + this.$store.state.gameSettings.wordNum;
+        textPayload += 'https://wordfoo.foostarstudio.com?n=' + this.$store.state.gameSettings.wordNum;
         
         navigator.share({
-          title: 'Wordle!',
+          title: 'Wordfoo!',
           text: textPayload
         }).then(() => {
           // console.log('Thanks for sharing!');

@@ -14,7 +14,7 @@ def driver_init(request):
   options.add_argument("--remote-debugging-port=9222")
   options.add_argument("--no-sandbox")
   driver = webdriver.Chrome(service=service, options=options)
-  driver.get("http://wordle-staging.albertliang.xyz")
+  driver.get("http://wordfoo-staging.albertliang.xyz")
   driver.implicitly_wait(0.5)
   request.cls.driver = driver
   request.cls.message_box = driver.find_element(By.ID, "message-box")
@@ -44,7 +44,7 @@ class TestAll(BaseTest):
     htype(self.driver, input)
     assert "You win" in self.message_box.text
     self.driver.find_element(By.ID, "play-again").click()
-    assert "Welcome to Wordle" in self.message_box.text
+    assert "Welcome to Wordfoo" in self.message_box.text
 
   def test_loss_shortcut(self):
     input = ['L', 'L', 'L', 'L', 'L', 'enter']
@@ -57,7 +57,7 @@ class TestAll(BaseTest):
       htype(self.driver, input)
     assert "Word was " in self.message_box.text
     self.driver.find_element(By.ID, "play-again").click()
-    assert "Welcome to Wordle" in self.message_box.text
+    assert "Welcome to Wordfoo" in self.message_box.text
 
   def test_question_modal(self):
     self.driver.find_element(By.ID, "key-question").click()
