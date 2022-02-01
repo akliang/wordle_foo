@@ -87,20 +87,11 @@ app.mixin({
     },
     
     initializeGame: function() {
-      // perform a deep-clone of the default values
-      this.$store.state.gameSettings.letterParams = JSON.parse(JSON.stringify(this.$store.state.gameSettings.defaultLetterParams));
-      this.$store.state.gameSettings.gridVals = JSON.parse(JSON.stringify(this.$store.state.gameSettings.defaultGridVals));
-      this.$store.state.gameSettings.gridColors = JSON.parse(JSON.stringify(this.$store.state.gameSettings.defaultGridColors));
-      this.$store.state.gameSettings.currRow = 0;
-      this.$store.state.gameSettings.currCol = 0;
-      this.$store.state.gameSettings.message = 'Welcome to Wordle!';
-      this.$store.state.gameSettings.playAgain = false;
-
       // pick the word
       let params = new URLSearchParams(document.location.search);
       let n = parseInt(params.get("n"));
       let wordNum = 0;
-      if (!isNaN(n)) {
+      if (!isNaN(n) && !this.$store.state.gameSettings.playAgain) {
         wordNum = n;
       } else {
         const maxNum = this.$store.state.wordList.maxNum;
@@ -109,6 +100,15 @@ app.mixin({
       history.pushState(null, '', '?n=' + wordNum);
       this.$store.state.gameSettings.wordNum = wordNum;
       this.$store.state.gameSettings.theWord = this.$store.state.wordList.words[wordNum].toUpperCase();
+
+      // perform a deep-clone of the default values
+      this.$store.state.gameSettings.letterParams = JSON.parse(JSON.stringify(this.$store.state.gameSettings.defaultLetterParams));
+      this.$store.state.gameSettings.gridVals = JSON.parse(JSON.stringify(this.$store.state.gameSettings.defaultGridVals));
+      this.$store.state.gameSettings.gridColors = JSON.parse(JSON.stringify(this.$store.state.gameSettings.defaultGridColors));
+      this.$store.state.gameSettings.currRow = 0;
+      this.$store.state.gameSettings.currCol = 0;
+      this.$store.state.gameSettings.message = 'Welcome to Wordle!';
+      this.$store.state.gameSettings.playAgain = false;
 
       // special debug case for development
       if (location.href.match("staging")) {
