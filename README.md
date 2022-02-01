@@ -21,10 +21,12 @@ docker-compose up
 # note, will automatically drop you into Python Debugger (pdb) when it hits the first FAIL
 ```
 
+Testing is also done automatically by Jenkins when the `main` branch is updated on server-side.
+
 # Wishlist
 
+- Jenkins auto deploy
 - stats keeping
-- copy to clipboard if navigator.share fails
 - change vue and tailwind cdn based on prod/dev
 
 # Testing wishlist
@@ -44,3 +46,7 @@ docker-compose up
 - Word list: https://github.com/charlesreid1/five-letter-words/blob/master/sgb-words.txt
 - Toggle button: https://codepen.io/lhermann/pen/EBGZRZ
 - Modal overlay: https://tailwindui.com/components/application-ui/overlays/modals
+
+# Developer notes
+
+- Added git post-receive hook on server-side (not version controlled)
