@@ -24,7 +24,7 @@ docker-compose up
 # Wishlist
 
 - stats keeping
-- seed in get param to sync up game with friend
+- copy to clipboard if navigator.share fails
 - change vue and tailwind cdn based on prod/dev
 
 # Testing wishlist
