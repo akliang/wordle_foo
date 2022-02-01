@@ -137,31 +137,34 @@ app.mixin({
     },
 
     shareOut: function() {
-      if (navigator.share) {
-        // construct the text payload
-        let textPayload = '';
-        for (let i=0; i <= this.$store.state.gameSettings.currRow; i++) {
-          for (let j=0; j < this.$store.state.gameSettings.currCol; j++) {
-            switch (this.$store.state.gameSettings.gridColors[i][j]) {
-              case 3: textPayload += '🟩'; break;
-              case 2: textPayload += '🟨'; break;
-              default: textPayload += '🔲';
-            }
+      // construct the text payload
+      let textPayload = '\n';
+      for (let i=0; i <= this.$store.state.gameSettings.currRow; i++) {
+        for (let j=0; j < this.$store.state.gameSettings.currCol; j++) {
+          switch (this.$store.state.gameSettings.gridColors[i][j]) {
+            case 3: textPayload += '🟩'; break;
+            case 2: textPayload += '🟨'; break;
+            default: textPayload += '⬛';
           }
-          textPayload += '\n';
         }
         textPayload += '\n';
-        textPayload += 'https://wordfoo.foostarstudio.com?n=' + this.$store.state.gameSettings.wordNum;
-        
+      }
+      let url = 'https://wordfoo.foostarstudio.com?n=' + this.$store.state.gameSettings.wordNum;
+
+      if (navigator.share) {
         navigator.share({
           title: 'Wordfoo!',
+          url: url,
           text: textPayload
         }).then(() => {
           // console.log('Thanks for sharing!');
         })
         .catch(console.error);
       } else {
-        console.log("Oops, sharing not supported.");
+        // console.log("Oops, sharing not supported.");
+        textPayload += url;
+        navigator.clipboard.writeText(textPayload);
+        this.$store.state.gameSettings.message='Copied to clipboard!';
       }
     }
   }
