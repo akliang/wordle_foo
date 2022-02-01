@@ -138,9 +138,24 @@ app.mixin({
 
     shareOut: function() {
       if (navigator.share) {
+        // construct the text payload
+        let textPayload = '';
+        for (let i=0; i <= this.$store.state.gameSettings.currRow; i++) {
+          for (let j=0; j < this.$store.state.gameSettings.currCol; j++) {
+            switch (this.$store.state.gameSettings.gridColors[i][j]) {
+              case 3: textPayload += '🟩'; break;
+              case 2: textPayload += '🟨'; break;
+              default: textPayload += '🔲';
+            }
+          }
+          textPayload += '\n';
+        }
+        textPayload += '\n';
+        
         navigator.share({
           title: 'Wordle!',
-          url: 'https://wordle.albertliang.xyz?n=' + this.$store.state.gameSettings.wordNum
+          url: 'https://wordle.albertliang.xyz?n=' + this.$store.state.gameSettings.wordNum,
+          text: textPayload
         }).then(() => {
           // console.log('Thanks for sharing!');
         })
