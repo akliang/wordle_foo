@@ -101,12 +101,32 @@ class TestAll(BaseTest):
     # at the moment, that means the style attribute is empty
     assert not settings_modal.get_attribute("style")
     # trigger dark mode
-    # TODO
+    self.driver.find_element(By.ID, "toggleB").click()
     # test closing the settings modal
     self.driver.find_element(By.ID, "close-settings-modal").click()
     assert "display: none" in settings_modal.get_attribute("style")
-    # check dark mode settings
-    # TODO
+    # check dark mode colors
+    # (first row)
+    assert 'bg-green' in self.driver.find_element(By.ID, "grid-0-0").get_attribute("class")
+    assert 'bg-yellow' in self.driver.find_element(By.ID, "grid-0-1").get_attribute("class")
+    assert 'bg-green' in self.driver.find_element(By.ID, "grid-0-2").get_attribute("class")
+    assert 'bg-yellow' in self.driver.find_element(By.ID, "grid-0-3").get_attribute("class")
+    assert 'bg-gray' in self.driver.find_element(By.ID, "grid-0-4").get_attribute("class")
+    # (second row)
+    assert 'bg-gray' in self.driver.find_element(By.ID, "grid-1-0").get_attribute("class")
+    assert 'bg-green' in self.driver.find_element(By.ID, "grid-1-1").get_attribute("class")
+    assert 'bg-gray' in self.driver.find_element(By.ID, "grid-1-2").get_attribute("class")
+    assert 'bg-gray' in self.driver.find_element(By.ID, "grid-1-3").get_attribute("class")
+    assert 'bg-gray' in self.driver.find_element(By.ID, "grid-1-4").get_attribute("class")
+    # (keyboard)
+    assert 'bg-green' in self.driver.find_element(By.ID, "key-H").get_attribute("class")
+    assert 'bg-green' in self.driver.find_element(By.ID, "key-E").get_attribute("class")
+    assert 'bg-green' in self.driver.find_element(By.ID, "key-L").get_attribute("class")
+    assert 'bg-yellow' in self.driver.find_element(By.ID, "key-O").get_attribute("class")
+    assert 'bg-gray' in self.driver.find_element(By.ID, "key-S").get_attribute("class")
+    assert 'bg-gray' in self.driver.find_element(By.ID, "key-D").get_attribute("class")
+    assert 'bg-gray' in self.driver.find_element(By.ID, "key-B").get_attribute("class")
+    assert 'bg-gray' in self.driver.find_element(By.ID, "key-N").get_attribute("class")
 
 
 
