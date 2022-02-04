@@ -72,7 +72,7 @@ done
 - stats keeping
 - change vue and tailwind cdn based on prod/dev
 - plausible.io tracking
-- (testing) test dark mode switch and colors
+- vuex local storage
 
 # Testing references
 
