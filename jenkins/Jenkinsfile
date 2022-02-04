@@ -28,6 +28,8 @@ pipeline {
     post {
       always {
         junit '**/*.xml'
+      }
+      failure {
         emailext (
           to: '$DEFAULT_RECIPIENTS',
           subject: '$DEFAULT_SUBJECT',
