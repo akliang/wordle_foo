@@ -8,5 +8,5 @@ services:
         GROUPID: $GROUPID
     volumes:
       - .:/app/code
-    command: pytest --verbose test_game.py -x --pdb --junitxml=./wordfoo_test_report.xml
+    command: pytest --verbose test_game.py --junitxml=./wordfoo_test_report.xml
     user: $USERID
