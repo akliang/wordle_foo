@@ -100,8 +100,8 @@ class TestAll(BaseTest):
     # vue v-show removes 'display: none' in order to show an element (instead of applying 'display: block')
     # at the moment, that means the style attribute is empty
     assert not settings_modal.get_attribute("style")
-    # trigger dark mode
-    self.driver.find_element(By.ID, "toggleB").click()
+    # trigger dark mode using JavascriptExecutor since there's a CSS styling panel that intercepts the click
+    self.driver.execute_script("arguments[0].click();", self.driver.find_element(By.ID, "toggleB"))
     # test closing the settings modal
     self.driver.find_element(By.ID, "close-settings-modal").click()
     assert "display: none" in settings_modal.get_attribute("style")
