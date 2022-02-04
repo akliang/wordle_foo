@@ -4,8 +4,6 @@ from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
-from helpers.utils import type_letters
-from helpers.utils import reset_board
 
 @pytest.fixture(scope="class")
 def driver_init(request):
@@ -29,32 +27,32 @@ class BaseTest:
 class TestAll(BaseTest):
   def test_partial_input(self):
     input = ['H', 'E', 'L', 'enter']
-    type_letters(self.driver, input)
+    self.type_letters(input)
     assert "Not enough letters" in self.message_box.text
-    reset_board(self.driver)
+    self.reset_board()
 
   def test_invalid_input(self):
     input = ['H', 'E', 'L', 'L', 'L', 'enter']
-    type_letters(self.driver, input)
+    self.type_letters(input)
     assert "Not a valid word" in self.message_box.text
-    reset_board(self.driver)
+    self.reset_board()
 
   def test_win_and_play_again(self):
     input = ['H', 'E', 'L', 'L', 'O', 'enter']
-    type_letters(self.driver, input)
+    self.type_letters(input)
     assert "You win" in self.message_box.text
     self.driver.find_element(By.ID, "play-again").click()
     assert "Welcome to Wordfoo" in self.message_box.text
 
   def test_loss_shortcut(self):
     input = ['L', 'L', 'L', 'L', 'L', 'enter']
-    type_letters(self.driver, input)
+    self.type_letters(input)
     assert "Word was " in self.message_box.text
 
   def test_loss_actual_and_play_again(self):
     input = ['H', 'O', 'U', 'N', 'D', 'enter']
     for n in range(0,7):
-      type_letters(self.driver, input)
+      self.type_letters(input)
     assert "Word was " in self.message_box.text
     self.driver.find_element(By.ID, "play-again").click()
     assert "Welcome to Wordfoo" in self.message_box.text
@@ -81,6 +79,15 @@ class TestAll(BaseTest):
     assert "display: none" in settings_modal.get_attribute("style")
     # check dark mode settings
     # TODO
+
+  def type_letters(self, input):
+    for i in input:
+        self.driver.find_element(By.ID, f"key-{i}").click()
+
+  def reset_board(self):
+    # click delete 5 times
+    for i in range(0, 5):
+      self.driver.find_element(By.ID, "key-delete").click()
     
 
 
