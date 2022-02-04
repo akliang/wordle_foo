@@ -57,6 +57,11 @@ class TestAll(BaseTest):
     self.driver.find_element(By.ID, "play-again").click()
     assert "Welcome to Wordfoo" in self.message_box.text
 
+  def test_color_highlighting(self):
+    input = ['H', 'O', 'U', 'N', 'D', 'enter']
+    self.type_letters(input)
+    assert '' in self.driver.find_element(By.ID, "grid-0-0").get_attribute("class")
+
   def test_question_modal(self):
     # open the question modal
     self.driver.find_element(By.ID, "key-question").click()
