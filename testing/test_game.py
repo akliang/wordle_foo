@@ -28,7 +28,7 @@ class TestAll(BaseTest):
   def test_partial_input(self):
     input = ['H', 'E', 'L', 'enter']
     self.type_letters(input)
-    assert "Not enough letters1234" in self.message_box.text
+    assert "Not enough letters" in self.message_box.text
     self.reset_board()
 
   def test_invalid_input(self):
