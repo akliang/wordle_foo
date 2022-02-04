@@ -4,9 +4,10 @@ from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
-from helpers.utils import type_letters as htype
+from helpers.utils import type_letters
+from helpers.utils import reset_board
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope="class")
 def driver_init(request):
   service = ChromeService(executable_path=ChromeDriverManager().install())
   options = ChromeOptions()
@@ -28,52 +29,56 @@ class BaseTest:
 class TestAll(BaseTest):
   def test_partial_input(self):
     input = ['H', 'E', 'L', 'enter']
-    htype(self.driver, input)
+    type_letters(self.driver, input)
     assert "Not enough letters" in self.message_box.text
+    reset_board(self.driver)
 
-  def test_invalid_input_and_delete_key(self):
+  def test_invalid_input(self):
     input = ['H', 'E', 'L', 'L', 'L', 'enter']
-    htype(self.driver, input)
+    type_letters(self.driver, input)
     assert "Not a valid word" in self.message_box.text
-    input = ['delete', 'O', 'enter']
-    htype(self.driver, input)
-    assert "You win" in self.message_box.text
+    reset_board(self.driver)
 
   def test_win_and_play_again(self):
     input = ['H', 'E', 'L', 'L', 'O', 'enter']
-    htype(self.driver, input)
+    type_letters(self.driver, input)
     assert "You win" in self.message_box.text
     self.driver.find_element(By.ID, "play-again").click()
     assert "Welcome to Wordfoo" in self.message_box.text
 
   def test_loss_shortcut(self):
     input = ['L', 'L', 'L', 'L', 'L', 'enter']
-    htype(self.driver, input)
+    type_letters(self.driver, input)
     assert "Word was " in self.message_box.text
 
   def test_loss_actual_and_play_again(self):
     input = ['H', 'O', 'U', 'N', 'D', 'enter']
     for n in range(0,7):
-      htype(self.driver, input)
+      type_letters(self.driver, input)
     assert "Word was " in self.message_box.text
     self.driver.find_element(By.ID, "play-again").click()
     assert "Welcome to Wordfoo" in self.message_box.text
 
   def test_question_modal(self):
+    # open the question modal
     self.driver.find_element(By.ID, "key-question").click()
     question_modal = self.driver.find_element(By.ID, "question-modal")
     assert "How to play" in question_modal.text
-    # test closing the question modal
-    # TODO
+    # closing the question modal
+    self.driver.find_element(By.ID, "close-question-modal").click()
+    # check the question-modal element does NOT exxist by checking that find_elements (note the plural element"s") is zero
+    assert len(self.driver.find_elements(By.ID, "question-modal")) == 0
 
   def test_settings_modal_and_dark_mode(self):
     self.driver.find_element(By.ID, "key-settings").click()
     settings_modal = self.driver.find_element(By.ID, "settings-modal")
-    assert settings_modal.is_displayed
+    # vue v-show removes 'display: none' in order to show an element (instead of applying 'display: block')
+    assert "" in settings_modal.get_attribute("style")
     # trigger dark mode
     # TODO
     # test closing the settings modal
-    # TODO
+    self.driver.find_element(By.ID, "close-settings-modal").click()
+    assert "display: none" in settings_modal.get_attribute("style")
     # check dark mode settings
     # TODO
     
