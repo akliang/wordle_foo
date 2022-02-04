@@ -15,7 +15,6 @@ pipeline {
             steps {
                 echo 'Testing..'
                 dir("./testing") {
-                  sh 'ls -la'
                   sh 'USERID=$(id -u) GROUPID=$(id -g) docker-compose up'
                 }
             }
