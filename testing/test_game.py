@@ -58,9 +58,31 @@ class TestAll(BaseTest):
     assert "Welcome to Wordfoo" in self.message_box.text
 
   def test_color_highlighting(self):
-    input = ['H', 'O', 'U', 'N', 'D', 'enter']
+    input = ['H', 'O', 'L', 'E', 'S', 'enter']
     self.type_letters(input)
-    assert '' in self.driver.find_element(By.ID, "grid-0-0").get_attribute("class")
+    assert 'bg-green' in self.driver.find_element(By.ID, "grid-0-0").get_attribute("class")
+    assert 'bg-yellow' in self.driver.find_element(By.ID, "grid-0-1").get_attribute("class")
+    assert 'bg-green' in self.driver.find_element(By.ID, "grid-0-2").get_attribute("class")
+    assert 'bg-yellow' in self.driver.find_element(By.ID, "grid-0-3").get_attribute("class")
+    assert 'bg-gray' in self.driver.find_element(By.ID, "grid-0-4").get_attribute("class")
+    assert 'bg-green' in self.driver.find_element(By.ID, "key-H").get_attribute("class")
+    assert 'bg-yellow' in self.driver.find_element(By.ID, "key-O").get_attribute("class")
+    assert 'bg-green' in self.driver.find_element(By.ID, "key-L").get_attribute("class")
+    assert 'bg-yellow' in self.driver.find_element(By.ID, "key-E").get_attribute("class")
+    assert 'bg-gray' in self.driver.find_element(By.ID, "key-S").get_attribute("class")
+
+    input = ['B', 'E', 'N', 'D', 'S', 'enter']
+    self.type_letters(input)
+    assert 'bg-gray' in self.driver.find_element(By.ID, "grid-1-0").get_attribute("class")
+    assert 'bg-green' in self.driver.find_element(By.ID, "grid-1-1").get_attribute("class")
+    assert 'bg-gray' in self.driver.find_element(By.ID, "grid-1-2").get_attribute("class")
+    assert 'bg-gray' in self.driver.find_element(By.ID, "grid-1-3").get_attribute("class")
+    assert 'bg-gray' in self.driver.find_element(By.ID, "grid-1-4").get_attribute("class")
+    assert 'bg-gray' in self.driver.find_element(By.ID, "key-B").get_attribute("class")
+    assert 'bg-green' in self.driver.find_element(By.ID, "key-E").get_attribute("class")
+    assert 'bg-gray' in self.driver.find_element(By.ID, "key-N").get_attribute("class")
+    assert 'bg-gray' in self.driver.find_element(By.ID, "key-D").get_attribute("class")
+    assert 'bg-gray' in self.driver.find_element(By.ID, "key-S").get_attribute("class")
 
   def test_question_modal(self):
     # open the question modal
@@ -76,7 +98,8 @@ class TestAll(BaseTest):
     self.driver.find_element(By.ID, "key-settings").click()
     settings_modal = self.driver.find_element(By.ID, "settings-modal")
     # vue v-show removes 'display: none' in order to show an element (instead of applying 'display: block')
-    assert "" in settings_modal.get_attribute("style")
+    # at the moment, that means the style attribute is empty
+    assert not settings_modal.get_attribute("style")
     # trigger dark mode
     # TODO
     # test closing the settings modal
@@ -85,6 +108,9 @@ class TestAll(BaseTest):
     # check dark mode settings
     # TODO
 
+
+
+  ### HELPER FUNCTIONS ###
   def type_letters(self, input):
     for i in input:
         self.driver.find_element(By.ID, f"key-{i}").click()
