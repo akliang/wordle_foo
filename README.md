@@ -74,7 +74,6 @@ done
 - plausible.io tracking
 - vuex local storage
   - https://www.mikestreety.co.uk/blog/vue-js-using-localstorage-with-the-vuex-store/
-- Makefile
 
 # Testing references
 
