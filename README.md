@@ -28,12 +28,12 @@ server {
 
 # Testing
 
-Testing is usually done via Selenium in a Docker container:
+Testing is done via Selenium (in a Docker container) against the staging instance.  This means that testing is done against the `develop` branch, with the assumption that it is identical to the `main` branch.  This may not hold true if you don't remember to merge `develop` into `main`.  (You can do that via `make merge_main`.)
 
 ```
-cd testing/
-USERID=$(id -u) GROUPID=$(id -g) docker-compose build
-USERID=$(id -u) GROUPID=$(id -g) docker-compose up
+# using Makefile
+make build_tests
+make run_tests
 ```
 
 If you need to access Python debugger (pdb), you will have to run pytest locally:
@@ -73,6 +73,8 @@ done
 - change vue and tailwind cdn based on prod/dev
 - plausible.io tracking
 - vuex local storage
+  - https://www.mikestreety.co.uk/blog/vue-js-using-localstorage-with-the-vuex-store/
+- Makefile
 
 # Testing references
 
