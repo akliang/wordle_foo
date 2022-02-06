@@ -4,35 +4,19 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                /* Wishlist:
-                - switch vue and tailwind from dev to prod files
-                - perform SCSS/LESS compiling
-                */
                 echo 'Building..'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
-                dir("./testing") {
-                  sh 'USERID=$(id -u) GROUPID=$(id -g) docker-compose up'
-                }
+                sh 'make test'
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                script {
-                  deploy_cmd = '''
-                    cd /home/user/foostar/foostar_website/wordfoo;
-                    git pull;
-                    sed -i -e "s/vue\.global\.js/vue.global.prod.js/" index.html
-                  '''
-                  deploy_cmd = deploy_cmd.replaceAll("\\s","")
-                }
-                echo "Executing deploy command on remote server:"
-                echo deploy_cmd
-                sh "ssh -p 33 -i /home/user/jenkins/.ssh/ubudocker user@albertliang.xyz '$deploy_cmd'"
+                sh "ssh -p 33 -i /home/user/jenkins/.ssh/ubudocker user@albertliang.xyz 'cd /home/user/foostar/foostar_website/wordfoo;git pull;make prod'"
             }
         }
     }
