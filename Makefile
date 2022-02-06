@@ -6,4 +6,7 @@ test:
 
 merge:
 	@git checkout main; git merge develop; git checkout develop
-	@echo 'merged develop branch into main branch, run "git push --all" to sync to remote'
+	@echo 'merged develop branch into main branch, run "make push" to sync to remote'
+
+push:
+	@git push --all
