@@ -30,6 +30,13 @@ pipeline {
       always {
         junit '**/*.xml'
       }
+      failed {
+        emailext (
+          to: '$DEFAULT_RECIPIENTS',
+          subject: '$DEFAULT_SUBJECT',
+          body: '$DEFAULT_CONTENT'
+        )
+      }
       unstable {
         emailext (
           to: '$DEFAULT_RECIPIENTS',
