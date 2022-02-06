@@ -73,6 +73,7 @@ done
 - change vue and tailwind cdn based on prod/dev
 - Istanbul coverage?  (looks messy...)
 - add testing for more browsers
+- make sure green key doesn't turn to yellow
 
 # Testing references
 
