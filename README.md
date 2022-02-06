@@ -71,7 +71,6 @@ done
 - Jenkins auto deploy
 - stats keeping
 - change vue and tailwind cdn based on prod/dev
-- plausible.io tracking
 - vuex local storage
   - https://www.mikestreety.co.uk/blog/vue-js-using-localstorage-with-the-vuex-store/
 
