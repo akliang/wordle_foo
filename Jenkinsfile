@@ -22,6 +22,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                ssh -p 33 -i ~/.ssh/ubudocker user@albertliang.xyz "cd /home/user/foostar/foostar_website/wordfoo; git pull"
             }
         }
     }
