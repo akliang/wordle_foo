@@ -68,11 +68,11 @@ done
 
 # Wishlist
 
-- Jenkins auto deploy
 - stats keeping
+  - [vuex local storage](https://www.mikestreety.co.uk/blog/vue-js-using-localstorage-with-the-vuex-store/)
 - change vue and tailwind cdn based on prod/dev
-- vuex local storage
-  - https://www.mikestreety.co.uk/blog/vue-js-using-localstorage-with-the-vuex-store/
+- Istanbul coverage?  (looks messy...)
+- add testing for more browsers
 
 # Testing references
 
