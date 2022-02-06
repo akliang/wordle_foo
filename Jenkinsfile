@@ -26,11 +26,13 @@ pipeline {
                   deploy_cmd = '''
                     cd /home/user/foostar/foostar_website/wordfoo;
                     git pull;
+                    sed -i -e "s/vue\.global\.js/vue.global.prod.js/" index.html
                   '''
                   deploy_cmd = deploy_cmd.replaceAll("\\s","")
                 }
+                echo "Executing deploy command on remote server:"
                 echo deploy_cmd
-                // sh "ssh -p 33 -i /home/user/jenkins/.ssh/ubudocker user@albertliang.xyz '$deploy_cmd'"
+                sh "ssh -p 33 -i /home/user/jenkins/.ssh/ubudocker user@albertliang.xyz '$deploy_cmd'"
             }
         }
     }
