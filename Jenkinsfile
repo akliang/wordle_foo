@@ -22,7 +22,13 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                sh 'ssh -p 33 -i /home/user/jenkins/.ssh/ubudocker user@albertliang.xyz "cd /home/user/foostar/foostar_website/wordfoo; git pull"'
+                deploy_cmd = '''
+                  cd /home/user/foostar/foostar_website/wordfoo;
+                  git pull;
+                '''
+                deploy_cmd = deploy_cmd.replaceAll("\\s","")
+                echo deploy_cmd
+                // sh "ssh -p 33 -i /home/user/jenkins/.ssh/ubudocker user@albertliang.xyz '$deploy_cmd'"
             }
         }
     }
