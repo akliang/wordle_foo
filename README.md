@@ -61,7 +61,7 @@ while read oldrev newrev refname
 do
     branch=$(git rev-parse --symbolic --abbrev-ref $refname)
     if [ "main" = "$branch" ]; then
-        curl -X POST 'http://<USER>:<API_KEY>@<JENKINS_PROJECT_URL_HERE>'
+        curl -X POST 'https://<USER>:<API_KEY>@<JENKINS_PROJECT_URL_HERE>'
     fi
 done
 ```
