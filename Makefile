@@ -18,7 +18,6 @@ prod:
 		-e '/script.*tailwind/d' \
 		-e '/tailwind/a <link rel="stylesheet" href="./css/main.css">' \
 		index.html
-
-prod2:
-	@docker build -f deploy/Dockerfile -t wordfoo_deploy .
-	@docker run -v css:/app/code/output wordfoo_deploy:latest
+	@current_dir=$$(pwd); \
+	docker build -f deploy/Dockerfile -t wordfoo_deploy .; \
+	docker run -v $$current_dir/css:/app/code/output wordfoo_deploy:latest
