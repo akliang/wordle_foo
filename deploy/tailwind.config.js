@@ -1,8 +1,8 @@
 module.exports = {
   content: [
-    './data/*.js',
-    './js/*.js',
-    'index.html'
+    '../data/*.js',
+    '../js/*.js',
+    '../index.html'
   ],
   plugins: [
     require('tailwindcss'),
