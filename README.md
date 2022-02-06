@@ -28,12 +28,12 @@ server {
 
 # Testing
 
-Testing is done via Selenium (in a Docker container) against the staging instance.  This means that testing is done against the `develop` branch, with the assumption that it is identical to the `main` branch.  This may not hold true if you don't remember to merge `develop` into `main`.  (You can do that via `make merge_main`.)
+Testing is done via Selenium (in a Docker container) against the staging instance.  This means that testing is done against the `develop` branch, with the assumption that it is identical to the `main` branch.  This may not hold true if you don't remember to merge `develop` into `main`.  (You can do that via `make merge`.)
 
 ```
 # using Makefile
 make build_tests
-make run_tests
+make test
 ```
 
 If you need to access Python debugger (pdb), you will have to run pytest locally:
@@ -50,7 +50,7 @@ pip install -r requirements.txt
 pytest test_game.py --pdb
 ```
 
-Testing is also done automatically by Jenkins when the `main` branch is updated on server-side by hitting a specific Jenkins project URL with `curl -X POST` via a Git post-receive hook.
+Testing is also done automatically by Jenkins when the `main` branch is updated on server-side (which triggers the build by hitting a specific Jenkins project URL with `curl -X POST` via a Git post-receive hook).
 
 ```
 # Example git hook (.git/hooks/post-receive)
@@ -66,11 +66,37 @@ do
 done
 ```
 
+# Deploy
+
+Deploy is handled automatically by Jenkins using `make` commands.
+
+```
+# Note: the Docker Jenkins image does not contain "make" out of the box
+sudo apt install make
+```
+
+The `make prod` command uses `sed` to change the URLs of the Vue and Vuex CDN imports to their production-ready versions.
+
+The Tailwind production step is more complicated.  First, a Docker container is build to `npm install tailwindcss` and imports the settings found in the deploy folder.  Next, it reads all the source files to detect which CSS tags were used, and converts the "base.css" skeleton file into a "main.css" file.  The index.html file is updated to use this "main.css" file instead of the Tailwind CDN (using the same `sed` step that converted the Vue and Vuex paths).
+
+# Example workflow
+
+1. make some changes to the develop branch
+2. run `make test` to run the test suite against the new changes
+3. run `make merge` to merge the develop branch into main
+4. run `make push` to push both develop and main up to origin
+5. ... which will trigger a build at Jenkins
+
+On the Jenkins server, the pipeline will also call `make test` and if that passes, will then:
+- SSH into the production server
+- run `git checkout .` to revert the production-related changes
+- run `git pull` to get the new source files plus any new make commands
+- run `make prod` to convert Vue, Vuex, and Tailwind imports into production-ready version
+
 # Wishlist
 
 - stats keeping
   - [vuex local storage](https://www.mikestreety.co.uk/blog/vue-js-using-localstorage-with-the-vuex-store/)
-- change vue and tailwind cdn based on prod/dev
 - Istanbul coverage?  (looks messy...)
 - add testing for more browsers
 - make sure green key doesn't turn to yellow
