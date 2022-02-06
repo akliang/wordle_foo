@@ -149,7 +149,7 @@ app.mixin({
         }
         textPayload += '\n';
       }
-      let url = 'https://wordfoo.foostarstudio.com?n=' + this.$store.state.gameSettings.wordNum;
+      let url = 'https://foostarstudio.com/wordfoo?n=' + this.$store.state.gameSettings.wordNum;
 
       if (navigator.share) {
         navigator.share({
