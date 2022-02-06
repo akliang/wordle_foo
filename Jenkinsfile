@@ -16,7 +16,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                sh "ssh -p 33 -i /home/user/jenkins/.ssh/ubudocker user@albertliang.xyz 'cd /home/user/foostar/foostar_website/wordfoo;git pull;make prod'"
+                sh "ssh -p 33 -i /home/user/jenkins/.ssh/ubudocker user@albertliang.xyz 'cd /home/user/foostar/foostar_website/wordfoo;git checkout .;git pull;make prod'"
             }
         }
     }
